@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Nu (0.1.0)
-Kerne uden afhængigheder, valgfrit Presidio-lag, evaluering og et syntetisk korpus (60 tekster). Første klient: summer-aula.
+Kerne uden afhængigheder, valgfrit Presidio-lag, evaluering og et syntetisk korpus (61 tekster). Første klient: summer-aula.
 
 ## Næste
 1. **Større og bedre korpus.** Flere syntetiske tekster (breve, beskeder, ugeplaner, referater), også med sværere tilfælde: kælenavne, navne i

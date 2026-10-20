@@ -188,6 +188,8 @@ class Pseudonymizer:
                     continue
                 if piece.strip().casefold() in {p.casefold() for p in self.store.protected}:
                     continue
+                if not piece[:1].isupper() and not getattr(layer, "allow_lowercase", False):
+                    continue  # danske navne skrives med stort; små ord (fx "hånd-fod-mundsyge") er sjældent personer
                 self._trace(AMBIGUOUS_PERSON, piece, layer.name)
                 out.append(text[pos:start])
                 out.append(AMBIGUOUS_PERSON)

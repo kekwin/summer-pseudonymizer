@@ -1,15 +1,15 @@
 # Presidio som valgfrit lag: målinger
 
-Målt 20. oktober 2026 på det syntetiske korpus (`corpus/da_synthetic.json`, 60 tekster, 5 navne først i en sætning). Kørt i Docker med
+Målt 20. oktober 2026 på det syntetiske korpus (`corpus/da_synthetic.json`, 61 tekster, 5 navne først i en sætning). Kørt i Docker med
 `--cpus=2 --memory=3g` (en lille serverprofil), Python 3.12, `presidio-analyzer` og `spacy`, danske spaCy-modeller. Script:
 `scripts/bench_presidio.py`.
 
 | Opsætning | Navne først i sætning fanget | Overmaskering | Lækager i alt | Indlæsning | Pr. tekst | Spids-RAM |
 |---|---|---|---|---|---|---|
-| Kerne alene | 2 af 5 | 3,6 % | 3 | - | - | lille |
-| + Presidio, `da_core_news_sm` | 3 af 5 | 4,8 % | 2 | 1,3 s | 2 ms | ca. 150 MB |
-| + Presidio, `da_core_news_md` | **4 af 5** | 3,6 % | 1 | 1,7 s | 3 ms | ca. 340 MB |
-| + Presidio, `da_core_news_lg` | 4 af 5 | 3,6 % | 1 | 1,6 s | 3 ms | ca. 910 MB |
+| Kerne alene | 2 af 5 | 3,5 % | 3 | - | - | lille |
+| + Presidio, `da_core_news_sm` | 3 af 5 | 4,7 % | 2 | 1,4 s | 2 ms | ca. 150 MB |
+| + Presidio, `da_core_news_md` | **4 af 5** | 3,5 % | 1 | 1,6 s | 3 ms | ca. 340 MB |
+| + Presidio, `da_core_news_lg` | 4 af 5 | 3,5 % | 1 | 1,8 s | 3 ms | ca. 910 MB |
 
 Alle andre kategorier (CPR, telefon, e-mail, adresse, link, konto, kendte navne, stavefejl, ukendte navne midt i en sætning) var allerede
 100 % med kernen alene; Presidio ændrer dem ikke.
@@ -20,7 +20,7 @@ Alle andre kategorier (CPR, telefon, e-mail, adresse, link, konto, kendte navne,
 - `md` er det fornuftige valg: samme resultat som `lg` med en tredjedel af hukommelsen. `sm` overmaskerer lidt mere og fanger færre.
 - Det er **billigt**: under 4 ms pr. tekst og ca. 340 MB, også på 2 CPU-kerner. Det passer fint til en lille hjemmeserver.
 - Korpusset er lille og skrevet af os. Tallene er et fingerpeg, ikke en garanti. Den rigtige måling kræver klientens egen mærkede prøve (lokalt).
-- Laget kan give flere falske fund (steder, firmanavne som PERSON). Overmaskeringen i korpusset er uændret, men prøv det på rigtige tekster.
+- Laget kan give flere falske fund (steder, firmanavne, sygdomsnavne som PERSON). Motoren godtager kun spænd, der starter med stort bogstav (danske navne skrives med stort), og det fjernede fx "hånd-fod-mundsyge" som falsk fund. Overmaskeringen i korpusset er uændret, men prøv det på rigtige tekster.
 
 ## Sådan slår du det til
 

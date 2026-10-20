@@ -51,7 +51,7 @@ python -m pseudonymizer corpus/da_synthetic.json            # kerne
 python -m pseudonymizer corpus/da_synthetic.json --presidio # med Presidio (kræver [presidio] og en dansk spaCy-model)
 ```
 
-Korpusset (`corpus/da_synthetic.json`, 60 opdigtede tekster) måler recall pr. type og **overmaskering** (nyttig tekst, der blev ødelagt).
+Korpusset (`corpus/da_synthetic.json`, 61 opdigtede tekster) måler recall pr. type og **overmaskering** (nyttig tekst, der blev ødelagt).
 Tallene er vejledende (lille, syntetisk korpus), men testene bruger dem som regressionsport, så motoren ikke bliver dårligere.
 Se [docs/PRESIDIO.md](docs/PRESIDIO.md) for målingerne med og uden Presidio.
 

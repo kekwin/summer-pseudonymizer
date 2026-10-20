@@ -130,6 +130,17 @@ class PseudoTest(unittest.TestCase):
         out = p.clean("Zacharias og Mikkel", strict=0).text
         self.assertEqual(out, "Person-? og Mikkel")
 
+    def test_layer_spans_must_be_capitalised(self):
+        class Fake:
+            name = "fake"
+
+            def find_spans(self, text):
+                i = text.find("mundsyge")
+                return [(i, i + 8, "PERSON")]
+
+        out = Pseudonymizer(self.store, layers=[Fake()]).clean("det er mundsyge", strict=0).text
+        self.assertEqual(out, "det er mundsyge")
+
 
 class StoreTest(unittest.TestCase):
     def test_tokens_stable_and_never_reused(self):

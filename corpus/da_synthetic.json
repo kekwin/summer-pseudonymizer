@@ -1,88 +1,942 @@
 {
-  "version": 1,
-  "beskrivelse": "Syntetisk dansk korpus. Alle navne, numre og adresser er opdigtet (e-mail og links bruger example.invalid). Ingen rigtige data.",
-  "registry": [
-    {"prefix": "Forælder", "key": "p:pernille", "names": ["Pernille Lindholm"]},
-    {"prefix": "Forælder", "key": "p:jesper", "names": ["Jesper Kjær"]},
-    {"prefix": "Forælder", "key": "p:anders", "names": ["Anders Sørensen"]},
-    {"prefix": "Forælder", "key": "p:annalouise", "names": ["Anna-Louise Bro"]},
-    {"prefix": "Barn", "key": "c:emma|rævene", "names": ["Emma"]},
-    {"prefix": "Barn", "key": "c:emma|sommerfuglene", "names": ["Emma"]},
-    {"prefix": "Barn", "key": "c:villads|rævene", "names": ["Villads"]},
-    {"prefix": "Barn", "key": "c:mathilde|rævene", "names": ["Mathilde"]},
-    {"prefix": "Barn", "key": "c:oscar|rævene", "names": ["Oscar"]},
-    {"prefix": "Barn", "key": "c:frida|rævene", "names": ["Frida"]},
-    {"prefix": "Pædagog", "key": "p:sofie", "names": ["Sofie Dahl"]},
-    {"prefix": "Lærer", "key": "p:lone", "names": ["Lone Mortensen"]},
-    {"prefix": "Ansat", "key": "p:bo", "names": ["Bo Winther"]}
-  ],
-  "protected": ["Mikkel", "Mette", "Noah", "Ida"],
-  "allowed": ["Rævene", "Sommerfuglene", "Syntetisk", "Skole", "Nord", "Børnehave", "Syd"],
-  "docs": [
-    {"id": "k01", "text": "Hej Pernille, tak for sidst. Emma har det fint.", "remove": [{"text": "Pernille", "type": "navn-kendt"}, {"text": "Emma", "type": "navn-kendt"}], "keep": ["tak for sidst"]},
-    {"id": "k02", "text": "Villads og Oscar skal på tur med Sofie på torsdag.", "remove": [{"text": "Villads", "type": "navn-kendt"}, {"text": "Oscar", "type": "navn-kendt"}, {"text": "Sofie", "type": "navn-kendt"}], "keep": ["torsdag"]},
-    {"id": "k03", "text": "Mathilde S. har fødselsdag, og Frida kommer også.", "remove": [{"text": "Mathilde S.", "type": "navn-kendt"}, {"text": "Frida", "type": "navn-kendt"}], "keep": ["har fødselsdag"]},
-    {"id": "k04", "text": "Jespers søn Villads har det bedre i dag.", "remove": [{"text": "Jespers", "type": "navn-kendt"}, {"text": "Villads", "type": "navn-kendt"}], "keep": ["har det bedre i dag"]},
-    {"id": "k05", "text": "Anna-Louise henter, og Anna-Louises mand ringer senere.", "remove": [{"text": "Anna-Louise", "type": "navn-kendt"}], "keep": ["ringer senere"]},
-    {"id": "k06", "text": "Bo Winther er syg i dag, så Lone Mortensen tager stuen.", "remove": [{"text": "Bo Winther", "type": "navn-kendt"}, {"text": "Lone Mortensen", "type": "navn-kendt"}], "keep": ["tager stuen"]},
-    {"id": "k07", "text": "PERNILLE LINDHOLM har skrevet til os i går.", "remove": [{"text": "PERNILLE", "type": "navn-kendt"}, {"text": "LINDHOLM", "type": "navn-kendt"}], "keep": ["har skrevet til os i går"]},
-    {"id": "k08", "text": "pernille og sofie holder møde på mandag.", "remove": [{"text": "pernille", "type": "navn-kendt"}, {"text": "sofie", "type": "navn-kendt"}], "keep": ["holder møde på mandag"]},
-    {"id": "k09", "text": "Tak for i dag.\nMvh Sofie", "remove": [{"text": "Sofie", "type": "navn-kendt"}], "keep": ["Tak for i dag"]},
-    {"id": "k10", "text": "Emma L. og Emma K. sidder sammen i bussen.", "remove": [{"text": "Emma L.", "type": "navn-kendt"}, {"text": "Emma K.", "type": "navn-kendt"}], "keep": ["sidder sammen i bussen"]},
-    {"id": "k11", "text": "Tak til Lone for turen, den var rigtig god.", "remove": [{"text": "Lone", "type": "navn-kendt"}], "keep": ["for turen"]},
-    {"id": "k12", "text": "Oscars far og Fridas mor henter i dag.", "remove": [{"text": "Oscars", "type": "navn-kendt"}, {"text": "Fridas", "type": "navn-kendt"}], "keep": ["henter i dag"]},
-    {"id": "k13", "text": "Sorensen er ikke det samme som Sørensen, men Anders Sørensen kommer.", "remove": [{"text": "Anders Sørensen", "type": "navn-kendt"}], "keep": ["kommer"]},
-
-    {"id": "m01", "text": "Hej Pernile og Jesper, tak for hjælpen.", "remove": [{"text": "Pernile", "type": "navn-stavefejl"}, {"text": "Jesper", "type": "navn-kendt"}], "keep": ["tak for hjælpen"]},
-    {"id": "m02", "text": "Sofi har ringet fra stuen.", "remove": [{"text": "Sofi", "type": "navn-stavefejl"}], "keep": ["har ringet fra stuen"]},
-    {"id": "m03", "text": "Mathilde og Villad skal med på tur.", "remove": [{"text": "Villad", "type": "navn-stavefejl"}], "keep": ["skal med på tur"]},
-    {"id": "m04", "text": "Lonne Mortensen kommer i morgen.", "remove": [{"text": "Mortensen", "type": "navn-kendt"}, {"text": "Lonne", "type": "navn-stavefejl"}], "keep": ["kommer i morgen"]},
-
-    {"id": "u01", "text": "Mormor Birgit henter Frida i dag.", "remove": [{"text": "Birgit", "type": "navn-ukendt"}], "keep": ["henter", "i dag"]},
-    {"id": "u02", "text": "Vi har fået en ny vikar, Camilla, i stuen.", "remove": [{"text": "Camilla", "type": "navn-ukendt"}], "keep": ["i stuen"]},
-    {"id": "u03", "text": "Hr. Hansen fra kommunen ringer i morgen.", "remove": [{"text": "Hansen", "type": "navn-ukendt"}], "keep": ["fra kommunen ringer i morgen"]},
-    {"id": "u04", "text": "Tobias, Ingeborg og Zacharias skal i svømmehallen.", "remove": [{"text": "Tobias", "type": "navn-ukendt-satsstart"}, {"text": "Ingeborg", "type": "navn-ukendt"}, {"text": "Zacharias", "type": "navn-ukendt"}], "keep": ["skal i svømmehallen"]},
-    {"id": "u05", "text": "Ossi har fødselsdag, og Oscar vil gerne invitere.", "remove": [{"text": "Ossi", "type": "navn-ukendt-satsstart"}], "keep": ["har fødselsdag"]},
-    {"id": "u06", "text": "Vi mødes hos Gitte og Henrik på lørdag.", "remove": [{"text": "Gitte", "type": "navn-ukendt"}, {"text": "Henrik", "type": "navn-ukendt"}], "keep": ["på lørdag"]},
-    {"id": "u07", "text": "Nabo Henrik har lånt stigen.", "remove": [{"text": "Henrik", "type": "navn-ukendt"}], "keep": ["har lånt stigen"]},
-    {"id": "u08", "text": "Din veninde Camilla ringede i går.", "remove": [{"text": "Camilla", "type": "navn-ukendt"}], "keep": ["ringede i går"]},
-    {"id": "u09", "text": "Mille har det fint og sover nu.", "remove": [{"text": "Mille", "type": "navn-ukendt-satsstart"}], "keep": ["har det fint og sover nu"]},
-    {"id": "u10", "text": "Spørg Alberte eller Rasmus, hvis I er i tvivl.", "remove": [{"text": "Alberte", "type": "navn-ukendt"}, {"text": "Rasmus", "type": "navn-ukendt"}], "keep": ["hvis I er i tvivl"]},
-    {"id": "u11", "text": "Jeg har talt med Karen, og hun kommer også.", "remove": [{"text": "Karen", "type": "navn-ukendt"}], "keep": ["og hun kommer også"]},
-    {"id": "u12", "text": "Pædagog Rikke har lavet madplanen.", "remove": [{"text": "Rikke", "type": "navn-ukendt"}], "keep": ["har lavet madplanen"]},
-
-    {"id": "i01", "text": "Ring til mig på 12 34 56 78 efter kl. 15.", "remove": [{"text": "12 34 56 78", "type": "telefon"}], "keep": ["efter kl. 15"]},
-    {"id": "i02", "text": "Mit nummer er +45 2345 6789, og jeg svarer hurtigt.", "remove": [{"text": "2345 6789", "type": "telefon"}], "keep": ["og jeg svarer hurtigt"]},
-    {"id": "i03", "text": "Barnets CPR-nummer er 150312-5555.", "remove": [{"text": "150312-5555", "type": "cpr"}], "keep": ["CPR-nummer"]},
-    {"id": "i04", "text": "Skriv til hanne.k@example.invalid, hvis du har spørgsmål.", "remove": [{"text": "hanne.k@example.invalid", "type": "email"}], "keep": ["hvis du har spørgsmål"]},
-    {"id": "i05", "text": "Se billederne på https://example.invalid/album/123?key=abc i weekenden.", "remove": [{"text": "https://example.invalid/album/123?key=abc", "type": "link"}], "keep": ["i weekenden"]},
-    {"id": "i06", "text": "Vi bor på Egevej 12, 2. th, 2300 København S, hvis I vil kigge forbi.", "remove": [{"text": "Egevej 12", "type": "adresse"}], "keep": ["hvis I vil kigge forbi"]},
-    {"id": "i07", "text": "Overfør til konto 1234 5678901234 eller MobilePay 12345.", "remove": [{"text": "5678901234", "type": "konto"}, {"text": "12345", "type": "konto"}], "keep": ["Overfør til"]},
-    {"id": "i08", "text": "Find os på @bornehaven_syd, så ser du billederne.", "remove": [{"text": "@bornehaven_syd", "type": "link"}], "keep": ["så ser du billederne"]},
-    {"id": "i09", "text": "Telefon 20304050, mobil 60 70 80 90, tak.", "remove": [{"text": "20304050", "type": "telefon"}, {"text": "60 70 80 90", "type": "telefon"}], "keep": ["tak"]},
-    {"id": "i10", "text": "Fødselsdato 15.03.2012 er fin at nævne, men CPR 1503125555 skal ikke stå her.", "remove": [{"text": "1503125555", "type": "cpr"}], "keep": ["15.03.2012", "skal ikke stå her"]},
-    {"id": "i11", "text": "Skovvej 7, 2400 København NV er adressen til festen.", "remove": [{"text": "Skovvej 7", "type": "adresse"}], "keep": ["er adressen til festen"]},
-    {"id": "i12", "text": "Ring på 4040 4040 eller skriv til os.", "remove": [{"text": "4040 4040", "type": "telefon"}], "keep": ["eller skriv til os"]},
-    {"id": "x01", "text": "Venlig hilsen\nLone Mortensen\nTlf. 33 44 55 66 | lone.m@example.invalid | Skovvej 7, 2400 København NV", "remove": [{"text": "Lone Mortensen", "type": "navn-kendt"}, {"text": "33 44 55 66", "type": "telefon"}, {"text": "lone.m@example.invalid", "type": "email"}, {"text": "Skovvej 7", "type": "adresse"}], "keep": ["Venlig hilsen"]},
-
-    {"id": "o01", "text": "Vi tager til Bakkehuset på torsdag den 29/10. Husk madpakke og praktisk tøj.", "remove": [], "keep": ["Bakkehuset", "torsdag den 29/10", "Husk madpakke og praktisk tøj"]},
-    {"id": "o02", "text": "Rævene har svømning mandag, og Sommerfuglene har idræt tirsdag.", "remove": [], "keep": ["Rævene har svømning mandag", "Sommerfuglene har idræt tirsdag"]},
-    {"id": "o03", "text": "Kære Forældre. Ugebrev for uge 43: Matematik, Dansk og Natur/teknologi.", "remove": [], "keep": ["Kære Forældre", "Ugebrev for uge 43", "Matematik", "Dansk"]},
-    {"id": "o04", "text": "Mødet i Aula er kl. 15:30 i Kantinen, og alle er velkomne.", "remove": [], "keep": ["Mødet i Aula", "kl. 15:30", "Kantinen"]},
-    {"id": "o05", "text": "Madplan uge 44: mandag boller i karry, tirsdag fiskefrikadeller, onsdag pasta.", "remove": [], "keep": ["Madplan uge 44", "mandag boller i karry", "tirsdag fiskefrikadeller"]},
-    {"id": "o06", "text": "Syntetisk Skole Nord inviterer til forældremøde 21. oktober kl. 17:00.", "remove": [], "keep": ["Syntetisk Skole Nord inviterer", "21. oktober kl. 17:00"]},
-    {"id": "o07", "text": "Tak for en dejlig dag. Hilsen personalet i børnehaven.", "remove": [], "keep": ["Tak for en dejlig dag", "Hilsen personalet i børnehaven"]},
-    {"id": "o08", "text": "Husk skiftetøj, regntøj og en vandflaske. I skal ikke medbringe legetøj.", "remove": [], "keep": ["Husk skiftetøj, regntøj og en vandflaske", "I skal ikke medbringe legetøj"]},
-    {"id": "o09", "text": "Noah og Ida har haft en god uge. Mette henter dem fredag.", "remove": [], "keep": ["Noah og Ida har haft en god uge", "Mette henter dem fredag"]},
-    {"id": "o10", "text": "Der er konstateret lus i Rævene. Tjek børnenes hår i weekenden.", "remove": [], "keep": ["Der er konstateret lus i Rævene", "Tjek børnenes hår i weekenden"]},
-    {"id": "o11", "text": "Vi ses til Sankt Hans i Tivoli, hvis vejret holder.", "remove": [], "keep": ["Sankt Hans", "Tivoli"]},
-    {"id": "o12", "text": "Fredag d. 23/10 er der fastelavn i Rævene kl. 13:00-15:00.", "remove": [], "keep": ["Fredag d. 23/10", "fastelavn i Rævene kl. 13:00-15:00"]},
-    {"id": "o13", "text": "Børnene skal have solcreme og kasket med til Danmark rundt-dagen.", "remove": [], "keep": ["solcreme og kasket", "Danmark"]},
-    {"id": "o14", "text": "Pædagogerne holder personalemøde onsdag, så der er lukket kl. 14:30.", "remove": [], "keep": ["holder personalemøde onsdag", "lukket kl. 14:30"]},
-
-    {"id": "s01", "strict": 2, "text": "Mille har det fint. Hun har spist lidt og sover nu.", "remove": [{"text": "Mille", "type": "navn-ukendt-satsstart"}], "keep": ["Hun har spist lidt og sover nu"]},
-    {"id": "s02", "strict": 2, "text": "Lægen tror det er skoldkopper. Tak for besked.", "remove": [], "keep": ["Lægen tror det er skoldkopper", "Tak for besked"]},
-    {"id": "s03", "strict": 2, "text": "Kæmpe tillykke med babyen! Vi glæder os til at se hende.", "remove": [], "keep": ["Kæmpe tillykke med babyen", "Vi glæder os til at se hende"]},
-    {"id": "s04", "strict": 2, "text": "Rasmus var ved lægen i går, og Pernille skrev, at Emma har det samme.", "remove": [{"text": "Rasmus", "type": "navn-ukendt-satsstart"}, {"text": "Pernille", "type": "navn-kendt"}, {"text": "Emma", "type": "navn-kendt"}], "keep": ["var ved lægen i går"]}
-  ]
+ "version": 1,
+ "beskrivelse": "Syntetisk dansk korpus. Alle navne, numre og adresser er opdigtet (e-mail og links bruger example.invalid). Ingen rigtige data.",
+ "registry": [
+  {
+   "prefix": "Forælder",
+   "key": "p:pernille",
+   "names": [
+    "Pernille Lindholm"
+   ]
+  },
+  {
+   "prefix": "Forælder",
+   "key": "p:jesper",
+   "names": [
+    "Jesper Kjær"
+   ]
+  },
+  {
+   "prefix": "Forælder",
+   "key": "p:anders",
+   "names": [
+    "Anders Sørensen"
+   ]
+  },
+  {
+   "prefix": "Forælder",
+   "key": "p:annalouise",
+   "names": [
+    "Anna-Louise Bro"
+   ]
+  },
+  {
+   "prefix": "Barn",
+   "key": "c:emma|rævene",
+   "names": [
+    "Emma"
+   ]
+  },
+  {
+   "prefix": "Barn",
+   "key": "c:emma|sommerfuglene",
+   "names": [
+    "Emma"
+   ]
+  },
+  {
+   "prefix": "Barn",
+   "key": "c:villads|rævene",
+   "names": [
+    "Villads"
+   ]
+  },
+  {
+   "prefix": "Barn",
+   "key": "c:mathilde|rævene",
+   "names": [
+    "Mathilde"
+   ]
+  },
+  {
+   "prefix": "Barn",
+   "key": "c:oscar|rævene",
+   "names": [
+    "Oscar"
+   ]
+  },
+  {
+   "prefix": "Barn",
+   "key": "c:frida|rævene",
+   "names": [
+    "Frida"
+   ]
+  },
+  {
+   "prefix": "Pædagog",
+   "key": "p:sofie",
+   "names": [
+    "Sofie Dahl"
+   ]
+  },
+  {
+   "prefix": "Lærer",
+   "key": "p:lone",
+   "names": [
+    "Lone Mortensen"
+   ]
+  },
+  {
+   "prefix": "Ansat",
+   "key": "p:bo",
+   "names": [
+    "Bo Winther"
+   ]
+  }
+ ],
+ "protected": [
+  "Mikkel",
+  "Mette",
+  "Noah",
+  "Ida"
+ ],
+ "allowed": [
+  "Rævene",
+  "Sommerfuglene",
+  "Syntetisk",
+  "Skole",
+  "Nord",
+  "Børnehave",
+  "Syd"
+ ],
+ "docs": [
+  {
+   "id": "k01",
+   "text": "Hej Pernille, tak for sidst. Emma har det fint.",
+   "remove": [
+    {
+     "text": "Pernille",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "Emma",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "tak for sidst"
+   ]
+  },
+  {
+   "id": "k02",
+   "text": "Villads og Oscar skal på tur med Sofie på torsdag.",
+   "remove": [
+    {
+     "text": "Villads",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "Oscar",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "Sofie",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "torsdag"
+   ]
+  },
+  {
+   "id": "k03",
+   "text": "Mathilde S. har fødselsdag, og Frida kommer også.",
+   "remove": [
+    {
+     "text": "Mathilde S.",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "Frida",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "har fødselsdag"
+   ]
+  },
+  {
+   "id": "k04",
+   "text": "Jespers søn Villads har det bedre i dag.",
+   "remove": [
+    {
+     "text": "Jespers",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "Villads",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "har det bedre i dag"
+   ]
+  },
+  {
+   "id": "k05",
+   "text": "Anna-Louise henter, og Anna-Louises mand ringer senere.",
+   "remove": [
+    {
+     "text": "Anna-Louise",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "ringer senere"
+   ]
+  },
+  {
+   "id": "k06",
+   "text": "Bo Winther er syg i dag, så Lone Mortensen tager stuen.",
+   "remove": [
+    {
+     "text": "Bo Winther",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "Lone Mortensen",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "tager stuen"
+   ]
+  },
+  {
+   "id": "k07",
+   "text": "PERNILLE LINDHOLM har skrevet til os i går.",
+   "remove": [
+    {
+     "text": "PERNILLE",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "LINDHOLM",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "har skrevet til os i går"
+   ]
+  },
+  {
+   "id": "k08",
+   "text": "pernille og sofie holder møde på mandag.",
+   "remove": [
+    {
+     "text": "pernille",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "sofie",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "holder møde på mandag"
+   ]
+  },
+  {
+   "id": "k09",
+   "text": "Tak for i dag.\nMvh Sofie",
+   "remove": [
+    {
+     "text": "Sofie",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "Tak for i dag"
+   ]
+  },
+  {
+   "id": "k10",
+   "text": "Emma L. og Emma K. sidder sammen i bussen.",
+   "remove": [
+    {
+     "text": "Emma L.",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "Emma K.",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "sidder sammen i bussen"
+   ]
+  },
+  {
+   "id": "k11",
+   "text": "Tak til Lone for turen, den var rigtig god.",
+   "remove": [
+    {
+     "text": "Lone",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "for turen"
+   ]
+  },
+  {
+   "id": "k12",
+   "text": "Oscars far og Fridas mor henter i dag.",
+   "remove": [
+    {
+     "text": "Oscars",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "Fridas",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "henter i dag"
+   ]
+  },
+  {
+   "id": "k13",
+   "text": "Sorensen er ikke det samme som Sørensen, men Anders Sørensen kommer.",
+   "remove": [
+    {
+     "text": "Anders Sørensen",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "kommer"
+   ]
+  },
+  {
+   "id": "m01",
+   "text": "Hej Pernile og Jesper, tak for hjælpen.",
+   "remove": [
+    {
+     "text": "Pernile",
+     "type": "navn-stavefejl"
+    },
+    {
+     "text": "Jesper",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "tak for hjælpen"
+   ]
+  },
+  {
+   "id": "m02",
+   "text": "Sofi har ringet fra stuen.",
+   "remove": [
+    {
+     "text": "Sofi",
+     "type": "navn-stavefejl"
+    }
+   ],
+   "keep": [
+    "har ringet fra stuen"
+   ]
+  },
+  {
+   "id": "m03",
+   "text": "Mathilde og Villad skal med på tur.",
+   "remove": [
+    {
+     "text": "Villad",
+     "type": "navn-stavefejl"
+    }
+   ],
+   "keep": [
+    "skal med på tur"
+   ]
+  },
+  {
+   "id": "m04",
+   "text": "Lonne Mortensen kommer i morgen.",
+   "remove": [
+    {
+     "text": "Mortensen",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "Lonne",
+     "type": "navn-stavefejl"
+    }
+   ],
+   "keep": [
+    "kommer i morgen"
+   ]
+  },
+  {
+   "id": "u01",
+   "text": "Mormor Birgit henter Frida i dag.",
+   "remove": [
+    {
+     "text": "Birgit",
+     "type": "navn-ukendt"
+    }
+   ],
+   "keep": [
+    "henter",
+    "i dag"
+   ]
+  },
+  {
+   "id": "u02",
+   "text": "Vi har fået en ny vikar, Camilla, i stuen.",
+   "remove": [
+    {
+     "text": "Camilla",
+     "type": "navn-ukendt"
+    }
+   ],
+   "keep": [
+    "i stuen"
+   ]
+  },
+  {
+   "id": "u03",
+   "text": "Hr. Hansen fra kommunen ringer i morgen.",
+   "remove": [
+    {
+     "text": "Hansen",
+     "type": "navn-ukendt"
+    }
+   ],
+   "keep": [
+    "fra kommunen ringer i morgen"
+   ]
+  },
+  {
+   "id": "u04",
+   "text": "Tobias, Ingeborg og Zacharias skal i svømmehallen.",
+   "remove": [
+    {
+     "text": "Tobias",
+     "type": "navn-ukendt-satsstart"
+    },
+    {
+     "text": "Ingeborg",
+     "type": "navn-ukendt"
+    },
+    {
+     "text": "Zacharias",
+     "type": "navn-ukendt"
+    }
+   ],
+   "keep": [
+    "skal i svømmehallen"
+   ]
+  },
+  {
+   "id": "u05",
+   "text": "Ossi har fødselsdag, og Oscar vil gerne invitere.",
+   "remove": [
+    {
+     "text": "Ossi",
+     "type": "navn-ukendt-satsstart"
+    }
+   ],
+   "keep": [
+    "har fødselsdag"
+   ]
+  },
+  {
+   "id": "u06",
+   "text": "Vi mødes hos Gitte og Henrik på lørdag.",
+   "remove": [
+    {
+     "text": "Gitte",
+     "type": "navn-ukendt"
+    },
+    {
+     "text": "Henrik",
+     "type": "navn-ukendt"
+    }
+   ],
+   "keep": [
+    "på lørdag"
+   ]
+  },
+  {
+   "id": "u07",
+   "text": "Nabo Henrik har lånt stigen.",
+   "remove": [
+    {
+     "text": "Henrik",
+     "type": "navn-ukendt"
+    }
+   ],
+   "keep": [
+    "har lånt stigen"
+   ]
+  },
+  {
+   "id": "u08",
+   "text": "Din veninde Camilla ringede i går.",
+   "remove": [
+    {
+     "text": "Camilla",
+     "type": "navn-ukendt"
+    }
+   ],
+   "keep": [
+    "ringede i går"
+   ]
+  },
+  {
+   "id": "u09",
+   "text": "Mille har det fint og sover nu.",
+   "remove": [
+    {
+     "text": "Mille",
+     "type": "navn-ukendt-satsstart"
+    }
+   ],
+   "keep": [
+    "har det fint og sover nu"
+   ]
+  },
+  {
+   "id": "u10",
+   "text": "Spørg Alberte eller Rasmus, hvis I er i tvivl.",
+   "remove": [
+    {
+     "text": "Alberte",
+     "type": "navn-ukendt"
+    },
+    {
+     "text": "Rasmus",
+     "type": "navn-ukendt"
+    }
+   ],
+   "keep": [
+    "hvis I er i tvivl"
+   ]
+  },
+  {
+   "id": "u11",
+   "text": "Jeg har talt med Karen, og hun kommer også.",
+   "remove": [
+    {
+     "text": "Karen",
+     "type": "navn-ukendt"
+    }
+   ],
+   "keep": [
+    "og hun kommer også"
+   ]
+  },
+  {
+   "id": "u12",
+   "text": "Pædagog Rikke har lavet madplanen.",
+   "remove": [
+    {
+     "text": "Rikke",
+     "type": "navn-ukendt"
+    }
+   ],
+   "keep": [
+    "har lavet madplanen"
+   ]
+  },
+  {
+   "id": "i01",
+   "text": "Ring til mig på 12 34 56 78 efter kl. 15.",
+   "remove": [
+    {
+     "text": "12 34 56 78",
+     "type": "telefon"
+    }
+   ],
+   "keep": [
+    "efter kl. 15"
+   ]
+  },
+  {
+   "id": "i02",
+   "text": "Mit nummer er +45 2345 6789, og jeg svarer hurtigt.",
+   "remove": [
+    {
+     "text": "2345 6789",
+     "type": "telefon"
+    }
+   ],
+   "keep": [
+    "og jeg svarer hurtigt"
+   ]
+  },
+  {
+   "id": "i03",
+   "text": "Barnets CPR-nummer er 150312-5555.",
+   "remove": [
+    {
+     "text": "150312-5555",
+     "type": "cpr"
+    }
+   ],
+   "keep": [
+    "CPR-nummer"
+   ]
+  },
+  {
+   "id": "i04",
+   "text": "Skriv til hanne.k@example.invalid, hvis du har spørgsmål.",
+   "remove": [
+    {
+     "text": "hanne.k@example.invalid",
+     "type": "email"
+    }
+   ],
+   "keep": [
+    "hvis du har spørgsmål"
+   ]
+  },
+  {
+   "id": "i05",
+   "text": "Se billederne på https://example.invalid/album/123?key=abc i weekenden.",
+   "remove": [
+    {
+     "text": "https://example.invalid/album/123?key=abc",
+     "type": "link"
+    }
+   ],
+   "keep": [
+    "i weekenden"
+   ]
+  },
+  {
+   "id": "i06",
+   "text": "Vi bor på Egevej 12, 2. th, 2300 København S, hvis I vil kigge forbi.",
+   "remove": [
+    {
+     "text": "Egevej 12",
+     "type": "adresse"
+    }
+   ],
+   "keep": [
+    "hvis I vil kigge forbi"
+   ]
+  },
+  {
+   "id": "i07",
+   "text": "Overfør til konto 1234 5678901234 eller MobilePay 12345.",
+   "remove": [
+    {
+     "text": "5678901234",
+     "type": "konto"
+    },
+    {
+     "text": "12345",
+     "type": "konto"
+    }
+   ],
+   "keep": [
+    "Overfør til"
+   ]
+  },
+  {
+   "id": "i08",
+   "text": "Find os på @bornehaven_syd, så ser du billederne.",
+   "remove": [
+    {
+     "text": "@bornehaven_syd",
+     "type": "link"
+    }
+   ],
+   "keep": [
+    "så ser du billederne"
+   ]
+  },
+  {
+   "id": "i09",
+   "text": "Telefon 20304050, mobil 60 70 80 90, tak.",
+   "remove": [
+    {
+     "text": "20304050",
+     "type": "telefon"
+    },
+    {
+     "text": "60 70 80 90",
+     "type": "telefon"
+    }
+   ],
+   "keep": [
+    "tak"
+   ]
+  },
+  {
+   "id": "i10",
+   "text": "Fødselsdato 15.03.2012 er fin at nævne, men CPR 1503125555 skal ikke stå her.",
+   "remove": [
+    {
+     "text": "1503125555",
+     "type": "cpr"
+    }
+   ],
+   "keep": [
+    "15.03.2012",
+    "skal ikke stå her"
+   ]
+  },
+  {
+   "id": "i11",
+   "text": "Skovvej 7, 2400 København NV er adressen til festen.",
+   "remove": [
+    {
+     "text": "Skovvej 7",
+     "type": "adresse"
+    }
+   ],
+   "keep": [
+    "er adressen til festen"
+   ]
+  },
+  {
+   "id": "i12",
+   "text": "Ring på 4040 4040 eller skriv til os.",
+   "remove": [
+    {
+     "text": "4040 4040",
+     "type": "telefon"
+    }
+   ],
+   "keep": [
+    "eller skriv til os"
+   ]
+  },
+  {
+   "id": "x01",
+   "text": "Venlig hilsen\nLone Mortensen\nTlf. 33 44 55 66 | lone.m@example.invalid | Skovvej 7, 2400 København NV",
+   "remove": [
+    {
+     "text": "Lone Mortensen",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "33 44 55 66",
+     "type": "telefon"
+    },
+    {
+     "text": "lone.m@example.invalid",
+     "type": "email"
+    },
+    {
+     "text": "Skovvej 7",
+     "type": "adresse"
+    }
+   ],
+   "keep": [
+    "Venlig hilsen"
+   ]
+  },
+  {
+   "id": "o01",
+   "text": "Vi tager til Bakkehuset på torsdag den 29/10. Husk madpakke og praktisk tøj.",
+   "remove": [],
+   "keep": [
+    "Bakkehuset",
+    "torsdag den 29/10",
+    "Husk madpakke og praktisk tøj"
+   ]
+  },
+  {
+   "id": "o02",
+   "text": "Rævene har svømning mandag, og Sommerfuglene har idræt tirsdag.",
+   "remove": [],
+   "keep": [
+    "Rævene har svømning mandag",
+    "Sommerfuglene har idræt tirsdag"
+   ]
+  },
+  {
+   "id": "o03",
+   "text": "Kære Forældre. Ugebrev for uge 43: Matematik, Dansk og Natur/teknologi.",
+   "remove": [],
+   "keep": [
+    "Kære Forældre",
+    "Ugebrev for uge 43",
+    "Matematik",
+    "Dansk"
+   ]
+  },
+  {
+   "id": "o04",
+   "text": "Mødet i Aula er kl. 15:30 i Kantinen, og alle er velkomne.",
+   "remove": [],
+   "keep": [
+    "Mødet i Aula",
+    "kl. 15:30",
+    "Kantinen"
+   ]
+  },
+  {
+   "id": "o05",
+   "text": "Madplan uge 44: mandag boller i karry, tirsdag fiskefrikadeller, onsdag pasta.",
+   "remove": [],
+   "keep": [
+    "Madplan uge 44",
+    "mandag boller i karry",
+    "tirsdag fiskefrikadeller"
+   ]
+  },
+  {
+   "id": "o06",
+   "text": "Syntetisk Skole Nord inviterer til forældremøde 21. oktober kl. 17:00.",
+   "remove": [],
+   "keep": [
+    "Syntetisk Skole Nord inviterer",
+    "21. oktober kl. 17:00"
+   ]
+  },
+  {
+   "id": "o07",
+   "text": "Tak for en dejlig dag. Hilsen personalet i børnehaven.",
+   "remove": [],
+   "keep": [
+    "Tak for en dejlig dag",
+    "Hilsen personalet i børnehaven"
+   ]
+  },
+  {
+   "id": "o08",
+   "text": "Husk skiftetøj, regntøj og en vandflaske. I skal ikke medbringe legetøj.",
+   "remove": [],
+   "keep": [
+    "Husk skiftetøj, regntøj og en vandflaske",
+    "I skal ikke medbringe legetøj"
+   ]
+  },
+  {
+   "id": "o09",
+   "text": "Noah og Ida har haft en god uge. Mette henter dem fredag.",
+   "remove": [],
+   "keep": [
+    "Noah og Ida har haft en god uge",
+    "Mette henter dem fredag"
+   ]
+  },
+  {
+   "id": "o10",
+   "text": "Der er konstateret lus i Rævene. Tjek børnenes hår i weekenden.",
+   "remove": [],
+   "keep": [
+    "Der er konstateret lus i Rævene",
+    "Tjek børnenes hår i weekenden"
+   ]
+  },
+  {
+   "id": "o11",
+   "text": "Vi ses til Sankt Hans i Tivoli, hvis vejret holder.",
+   "remove": [],
+   "keep": [
+    "Sankt Hans",
+    "Tivoli"
+   ]
+  },
+  {
+   "id": "o12",
+   "text": "Fredag d. 23/10 er der fastelavn i Rævene kl. 13:00-15:00.",
+   "remove": [],
+   "keep": [
+    "Fredag d. 23/10",
+    "fastelavn i Rævene kl. 13:00-15:00"
+   ]
+  },
+  {
+   "id": "o13",
+   "text": "Børnene skal have solcreme og kasket med til Danmark rundt-dagen.",
+   "remove": [],
+   "keep": [
+    "solcreme og kasket",
+    "Danmark"
+   ]
+  },
+  {
+   "id": "o14",
+   "text": "Pædagogerne holder personalemøde onsdag, så der er lukket kl. 14:30.",
+   "remove": [],
+   "keep": [
+    "holder personalemøde onsdag",
+    "lukket kl. 14:30"
+   ]
+  },
+  {
+   "id": "s01",
+   "strict": 2,
+   "text": "Mille har det fint. Hun har spist lidt og sover nu.",
+   "remove": [
+    {
+     "text": "Mille",
+     "type": "navn-ukendt-satsstart"
+    }
+   ],
+   "keep": [
+    "Hun har spist lidt og sover nu"
+   ]
+  },
+  {
+   "id": "s02",
+   "strict": 2,
+   "text": "Lægen tror det er skoldkopper. Tak for besked.",
+   "remove": [],
+   "keep": [
+    "Lægen tror det er skoldkopper",
+    "Tak for besked"
+   ]
+  },
+  {
+   "id": "s03",
+   "strict": 2,
+   "text": "Kæmpe tillykke med babyen! Vi glæder os til at se hende.",
+   "remove": [],
+   "keep": [
+    "Kæmpe tillykke med babyen",
+    "Vi glæder os til at se hende"
+   ]
+  },
+  {
+   "id": "s04",
+   "strict": 2,
+   "text": "Rasmus var ved lægen i går, og Pernille skrev, at Emma har det samme.",
+   "remove": [
+    {
+     "text": "Rasmus",
+     "type": "navn-ukendt-satsstart"
+    },
+    {
+     "text": "Pernille",
+     "type": "navn-kendt"
+    },
+    {
+     "text": "Emma",
+     "type": "navn-kendt"
+    }
+   ],
+   "keep": [
+    "var ved lægen i går"
+   ]
+  },
+  {
+   "id": "o15",
+   "text": "Lægen tror, det er hånd-fod-mundsyge, så vi holder Noah hjemme.",
+   "remove": [],
+   "keep": [
+    "hånd-fod-mundsyge",
+    "vi holder Noah hjemme"
+   ]
+  }
+ ]
 }
