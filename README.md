@@ -33,14 +33,16 @@ print(c.ok)     # True: vagten fandt intet tilbage
 1. **Rens:** CPR, telefon, e-mail, links, @-håndtag, adresser, postnumre, kontonumre og lange tal -> `[CPR]`, `[TELEFON]`, ... Datoer og
    klokkeslæt bevares. HTML -> tekst, Unicode-normalisering, usynlige tegn fjernes.
 2. **Kendte navne** fra token-lageret: hele navne, fornavne, efternavne, bindestregsnavne, dansk genitiv (`Emmas`), initial (`Emma L.`),
-   stort/småt, kun hele ord. Flertydigt (to børn hedder Emma) giver `Barn-?`, aldrig et gæt.
+   **uanset store og små bogstaver**, kun hele ord. Flertydigt (to børn hedder Emma) giver `Barn-?`, aldrig et gæt.
 3. **Stavefejl:** et stort ord, der kun er én tastefejl fra et kendt navn, maskeres som navnet.
 4. **Udløsere:** "mormor Birgit", "onkel Jens", "vikar Karen" -> navnet maskeres.
 5. **Flaggede ord** (klientens egen liste).
 6. **Valgfrie lag** (Presidio/NER): ukendte personnavne.
-7. **Streng maskering** (valgfri): danske navneord skrives med småt, så et stort ord midt i en sætning er næsten altid et navn eller sted
+7. **Almindelige danske fornavne** (indbygget liste, også med småt): "ring til camilla" -> `Person-?`. Navne, der også er almindelige ord
+   ("bo", "per", "hans"), er udeladt.
+8. **Streng maskering** (valgfri): danske navneord skrives med småt, så et stort ord midt i en sætning er næsten altid et navn eller sted
    og maskeres, medmindre klienten har tilladt det. Niveau 2 tager også ord først i en sætning.
-8. **Lækagevagt:** står noget tilbage, tilbageholdes hele teksten.
+9. **Lækagevagt:** står noget tilbage, tilbageholdes hele teksten.
 
 Dertil `find_topics()`: brede ordlister for følsomme emner (sygdom, medicin, adfærd, familie, økonomi). Klienten afgør, hvad der må frigives.
 
@@ -51,9 +53,9 @@ python -m pseudonymizer corpus/da_synthetic.json            # kerne
 python -m pseudonymizer corpus/da_synthetic.json --presidio # med Presidio (kræver [presidio] og en dansk spaCy-model)
 ```
 
-Korpusset (`corpus/da_synthetic.json`, 61 opdigtede tekster) måler recall pr. type og **overmaskering** (nyttig tekst, der blev ødelagt).
+Korpusset (`corpus/da_synthetic.json`, 68 opdigtede tekster) måler recall pr. type og **overmaskering** (nyttig tekst, der blev ødelagt).
 Tallene er vejledende (lille, syntetisk korpus), men testene bruger dem som regressionsport, så motoren ikke bliver dårligere.
-Se [docs/PRESIDIO.md](docs/PRESIDIO.md) for målingerne med og uden Presidio.
+Se [docs/PRESIDIO.md](docs/PRESIDIO.md) for målingerne med og uden Presidio og for **den kendte svaghed: sjældne navne med småt**.
 
 ## Kør testene
 

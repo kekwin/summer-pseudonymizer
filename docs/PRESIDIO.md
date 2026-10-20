@@ -1,26 +1,36 @@
 # Presidio som valgfrit lag: målinger
 
-Målt 20. oktober 2026 på det syntetiske korpus (`corpus/da_synthetic.json`, 61 tekster, 5 navne først i en sætning). Kørt i Docker med
-`--cpus=2 --memory=3g` (en lille serverprofil), Python 3.12, `presidio-analyzer` og `spacy`, danske spaCy-modeller. Script:
-`scripts/bench_presidio.py`.
+Målt 20. oktober 2026 på det syntetiske korpus (`corpus/da_synthetic.json`, 68 tekster). Kørt i Docker med `--cpus=2 --memory=3g` (en lille
+serverprofil), Python 3.12, `presidio-analyzer` og `spacy`, danske spaCy-modeller. Script: `scripts/bench_presidio.py`.
 
-| Opsætning | Navne først i sætning fanget | Overmaskering | Lækager i alt | Indlæsning | Pr. tekst | Spids-RAM |
-|---|---|---|---|---|---|---|
-| Kerne alene | 2 af 5 | 3,5 % | 3 | - | - | lille |
-| + Presidio, `da_core_news_sm` | 3 af 5 | 4,7 % | 2 | 1,4 s | 2 ms | ca. 150 MB |
-| + Presidio, `da_core_news_md` | **4 af 5** | 3,5 % | 1 | 1,6 s | 3 ms | ca. 340 MB |
-| + Presidio, `da_core_news_lg` | 4 af 5 | 3,5 % | 1 | 1,8 s | 3 ms | ca. 910 MB |
+| Opsætning | Ukendt, først i sætning | Ukendt, småt (almindeligt navn) | Sjældent navn, stort | Sjældent navn, **småt** | Overmaskering | Indlæsning | Pr. tekst | Spids-RAM |
+|---|---|---|---|---|---|---|---|---|
+| Kerne alene (med navneliste) | 4 af 5 | 6 af 6 | 2 af 4 | **0 af 10** | 2,8 % | - | - | lille |
+| + Presidio, `sm` | 4 af 5 | 6 af 6 | 2 af 4 | 1 af 10 | 4,6 % | 1,4 s | 2 ms | ca. 150 MB |
+| + Presidio, `md` | 4 af 5 | 6 af 6 | **4 af 4** | 1 af 10 | 2,8 % | 1,7 s | 3 ms | ca. 340 MB |
+| + Presidio, `lg` | 4 af 5 | 6 af 6 | 4 af 4 | 0 af 10 | 2,8 % | 2,0 s | 3 ms | ca. 910 MB |
 
-Alle andre kategorier (CPR, telefon, e-mail, adresse, link, konto, kendte navne, stavefejl, ukendte navne midt i en sætning) var allerede
-100 % med kernen alene; Presidio ændrer dem ikke.
+Navne, **motoren kender** (fra strukturerede felter), findes uanset store/små bogstaver: 100 % (også `navn-kendt-småt`). Identifikatorer (CPR,
+telefon, e-mail, adresse, link, konto) og stavefejl er 100 % med kernen alene.
 
 ## Hvad tallene siger, og ikke siger
-- Presidio med `md` fanger de ukendte navne først i en sætning, som kernen ikke kan se ("Tobias ...", "Mille ..."). Det mangler stadig kælenavne
-  ("Ossi"). Det er det, laget er til: et ekstra net for navne, kernen ikke kender.
-- `md` er det fornuftige valg: samme resultat som `lg` med en tredjedel af hukommelsen. `sm` overmaskerer lidt mere og fanger færre.
-- Det er **billigt**: under 4 ms pr. tekst og ca. 340 MB, også på 2 CPU-kerner. Det passer fint til en lille hjemmeserver.
-- Korpusset er lille og skrevet af os. Tallene er et fingerpeg, ikke en garanti. Den rigtige måling kræver klientens egen mærkede prøve (lokalt).
-- Laget kan give flere falske fund (steder, firmanavne, sygdomsnavne som PERSON). Motoren godtager kun spænd, der starter med stort bogstav (danske navne skrives med stort), og det fjernede fx "hånd-fod-mundsyge" som falsk fund. Overmaskeringen i korpusset er uændret, men prøv det på rigtige tekster.
+- **Små bogstaver er det svage punkt.** Navne kan sagtens være skrevet med småt i en besked ("ring til oline"). Kendte navne og almindelige danske
+  fornavne (en indbygget liste) fanges, uanset hvordan de er skrevet. **Sjældne, ukendte navne med småt fanges stort set ikke**, hverken af
+  kernen eller af Presidio: spaCys danske modeller genkender navne på store bogstaver og ser næsten intet, når navnet står med småt.
+- Presidio (`md`) hjælper på **sjældne navne med stort** (4 af 4 mod 2 af 4), især først i en sætning. `md` er det fornuftige valg: samme resultat
+  som `lg` med en tredjedel af hukommelsen; `sm` overmaskerer mere.
+- Det er billigt: under 4 ms pr. tekst og ca. 340 MB på 2 kerner. Det passer til en lille hjemmeserver.
+- **Navnelisten er skrevet af os og korpusset også**; kernens tal for almindelige navne er derfor optimistiske. Korpusset er lille og syntetisk.
+  Den rigtige måling kræver klientens egen mærkede prøve (lokalt).
+- Laget kan give falske fund (steder, firmanavne, sygdomsnavne). Små spænd, der ligner almindelige ord eller emneord (fx "hånd-fod-mundsyge"),
+  afvises af motoren; men man kan ikke kræve stort begyndelsesbogstav, fordi navne med småt er virkelige.
+
+## Hvad der kan løse hullet med sjældne navne med småt
+1. En **langt større navneliste** bygget af offentlig navnestatistik (fx Danmarks Statistik), renset for navne, der også er almindelige ord.
+2. En **NER-model trænet med småt-augmentering** (navne tilfældigt skrevet med småt og med stavefejl). Det er en oplagt opgave til en stationær
+   maskine med grafikkort; se [ROADMAP](ROADMAP.md). Kør derefter modellen på CPU (spaCy-format) som et Presidio-lag.
+3. Klientens egen flagning: hvert navn, der slap igennem, tilføjes til listen og huskes.
+4. Streng tilstand (`strict=2`) og klientens egne regler for tråde, hvor en fejl er dyr.
 
 ## Sådan slår du det til
 

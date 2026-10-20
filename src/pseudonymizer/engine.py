@@ -12,6 +12,7 @@ from dataclasses import dataclass, field
 from typing import Protocol
 
 from .lexicon import ALWAYS_OK, STARTERS, WEEKDAYS_MONTHS
+from .names_da import COMMON_FIRST_NAMES
 from .store import TokenStore
 from .textclean import find_identifiers, scrub
 from .topics import find_topics
@@ -29,6 +30,10 @@ _TRIGGER_RE = re.compile(
 )
 _CAP_WORD = re.compile(r"[A-ZÆØÅ][\wæøåÆØÅ'-]*")
 _ACRONYM_HYPHEN = re.compile(r"^[A-ZÆØÅ]{2,}-")
+_COMMON_NAMES_RE = re.compile(
+    r"(?<!\w)(?P<n>" + "|".join(re.escape(n) for n in sorted(COMMON_FIRST_NAMES, key=len, reverse=True)) + r")(?P<g>['’]?s)?(?!\w)",
+    re.I,
+)
 _TOKEN_LIKE = re.compile(r"^(?:[A-ZÆØÅ][a-zæøå]+)-(?:\d+|\?)")
 
 
@@ -80,7 +85,7 @@ class Cleaned:
 
 
 class Pseudonymizer:
-    def __init__(self, store: TokenStore, extra_words=(), layers=()):
+    def __init__(self, store: TokenStore, extra_words=(), layers=(), common_names: bool = True):
         self.store = store
         self.layers = list(layers)
         self.extra_words = [w for w in extra_words if w and len(w.strip()) >= 2]
@@ -92,6 +97,7 @@ class Pseudonymizer:
         self._extra_rx = None
         self._fuzzy_index: dict[str, list] = {}
         self.fuzzy = True
+        self.common_names = common_names
         self.trace: list | None = None   # sættes af en visning: [(token, original, lag)]
         if self.extra_words:
             alt = "|".join(re.escape(w.strip()) for w in sorted(self.extra_words, key=len, reverse=True))
@@ -175,7 +181,28 @@ class Pseudonymizer:
 
         return _CAP_WORD.sub(rep, text)
 
+    # ------------------------------------------------------------------ almindelige danske fornavne (også med småt)
+    def _common_names(self, text: str, allowed=frozenset()) -> str:
+        skip = {a.casefold() for a in set(allowed) | self.store.protected}
+
+        def rep(m: re.Match) -> str:
+            name = m.group("n")
+            if name.casefold() in skip or name.casefold() in STARTERS or name.casefold() in ALWAYS_OK:
+                return m.group(0)
+            self._trace(AMBIGUOUS_PERSON, m.group(0), "navneliste")
+            return AMBIGUOUS_PERSON + ("'s" if m.group("g") else "")
+
+        return _COMMON_NAMES_RE.sub(rep, text)
+
     # ------------------------------------------------------------------ ekstra lag (NER/Presidio)
+    @staticmethod
+    def _looks_like_common_word(piece: str) -> bool:
+        """Et spænd fra et NER-lag, der starter med småt: er det et almindeligt ord eller et emneord frem for et navn?"""
+        if any(ch.isdigit() for ch in piece) or find_topics(piece):
+            return True
+        words = re.findall(r"[\wæøåÆØÅ]+", piece.casefold())
+        return bool(words) and all(w in STARTERS or w in ALWAYS_OK or w in WEEKDAYS_MONTHS for w in words)
+
     def _apply_layers(self, text: str) -> str:
         for layer in self.layers:
             spans = sorted(layer.find_spans(text), key=lambda s: s[0])
@@ -188,8 +215,8 @@ class Pseudonymizer:
                     continue
                 if piece.strip().casefold() in {p.casefold() for p in self.store.protected}:
                     continue
-                if not piece[:1].isupper() and not getattr(layer, "allow_lowercase", False):
-                    continue  # danske navne skrives med stort; små ord (fx "hånd-fod-mundsyge") er sjældent personer
+                if not piece[:1].isupper() and self._looks_like_common_word(piece):
+                    continue  # navne kan være skrevet med småt, men almindelige ord og sygdomsnavne er ikke personer
                 self._trace(AMBIGUOUS_PERSON, piece, layer.name)
                 out.append(text[pos:start])
                 out.append(AMBIGUOUS_PERSON)
@@ -218,7 +245,7 @@ class Pseudonymizer:
             prev = text[:s].rstrip(" \t")
             if prev.endswith("["):  # [CPR]
                 return w
-            sentence_start = (not prev) or prev[-1] in ".!?:\n" or prev.endswith(("\n", "•", "-"))
+            sentence_start = (not prev) or (prev[-1] in ".!?:\n" and not prev.endswith("-?")) or prev.endswith(("\n", "•", "-"))
             if sentence_start and (level < 2 or cf in STARTERS):
                 return w
             if cf in ALWAYS_OK or base.casefold() in ALWAYS_OK:
@@ -239,6 +266,8 @@ class Pseudonymizer:
         t = self._sub_names(t)
         if self.fuzzy:
             t = self._fuzzy_names(t, allowed)
+        if self.common_names and strict:
+            t = self._common_names(t, allowed)
 
         def trig(m):
             self._trace(AMBIGUOUS_PERSON, m.group("n"), "udløser")

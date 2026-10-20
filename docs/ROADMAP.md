@@ -11,14 +11,16 @@ Kerne uden afhængigheder, valgfrit Presidio-lag, evaluering og et syntetisk kor
 3. **Pakning.** Tagget versioner og en fast måde at hente motoren på (pin til commit-SHA i klientens Dockerfile). Kernen skal blive ved at
    være lille og uden afhængigheder, så en container ikke vokser.
 4. **Flere genkendere:** danske virksomhedsnumre (CVR), registreringsnumre, mere præcise adresser (vejnavne med flere ord, stednavne), IBAN.
-5. **Bedre navnegenkendelse uden Presidio:** fx en liste over almindelige danske fornavne (offentlig statistik), så ukendte navne først i en
-   sætning kan fanges billigt, uden en sprogmodel.
+5. **Større navneliste:** i dag er listen af almindelige fornavne skrevet efter hukommelsen (ca. 400). Byg en langt større fra offentlig
+   navnestatistik (fx Danmarks Statistik), renset for navne, der også er almindelige ord. Det er den billigste vej til sjældne navne med småt.
 
 ## Træning på stationær maskine (idé, ikke påbegyndt)
 Ejerens stationære computer har rigelig CPU og et grafikkort. Den kan bruges til at give motoren "flere muskler", når den kører på en lille
 hjemmeserver (6 kerner, 16 GB, ingen GPU, delt med andre tjenester):
 
-- **Finjustere en lille dansk NER-model** (fx en spaCy- eller DaCy-model) og eksportere en lille model til CPU-inferens på serveren.
+- **Finjustere en lille dansk NER-model** (fx en spaCy- eller DaCy-model) **med småt-augmentering**: navne tilfældigt skrevet med småt og med
+  stavefejl, så modellen også ser navne som "oline" og "torvald" (i dag fanger ingen af lagene sjældne navne med småt, se PRESIDIO.md).
+  Eksportér en lille model til CPU-inferens på serveren.
   Evaluering altid med servervilkår (`docker run --cpus=2 --memory=2g`, se `scripts/bench_presidio.py`).
 - **Træne en klassifikator** (vigtig/fyld) hører hjemme i klienten, ikke her.
 - **Hurtigere eksperimenter:** lade GPU'en køre sammenligninger af modeller og tærskler, så serveren kun får den vindende, lille model.

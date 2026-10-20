@@ -25,7 +25,14 @@ for _ in range(3):
 per = (time.time() - t0) / (3 * len(texts)) * 1000
 r = evaluate(corpus, (layer,))
 rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
-ukendt = r["recall"].get("navn-ukendt-satsstart", {})
-print(f"{model}: indlæsning {load:.1f} s, {per:.0f} ms pr. tekst, spids-RAM {rss:.0f} MB, "
-      f"sætningsstart-navne {ukendt.get('fjernet')}/{ukendt.get('i_alt')}, "
-      f"overmaskering {r['overmaskering']['andel']:.1%}, lækager {len(r['lækager'])}")
+
+
+def rec(t):
+    v = r["recall"].get(t)
+    return f"{v['fjernet']}/{v['i_alt']}" if v else "-"
+
+
+print(f"{model}: indlæsning {load:.1f} s, {per:.0f} ms pr. tekst, spids-RAM {rss:.0f} MB | "
+      f"ukendt-satsstart {rec('navn-ukendt-satsstart')}, ukendt-småt {rec('navn-ukendt-småt')}, "
+      f"sjælden-stort {rec('navn-sjælden-stort')}, sjælden-småt {rec('navn-sjælden-småt')} | "
+      f"overmaskering {r['overmaskering']['andel']:.1%}")

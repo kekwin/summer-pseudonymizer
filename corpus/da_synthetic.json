@@ -937,6 +937,272 @@
     "hånd-fod-mundsyge",
     "vi holder Noah hjemme"
    ]
+  },
+  {
+   "id": "l01",
+   "text": "hej pernille, emma har det fint i dag",
+   "remove": [
+    {
+     "text": "pernille",
+     "type": "navn-kendt-småt"
+    },
+    {
+     "text": "emma",
+     "type": "navn-kendt-småt"
+    }
+   ],
+   "keep": [
+    "har det fint i dag"
+   ]
+  },
+  {
+   "id": "l02",
+   "text": "villads og oscar skal med sofie på tur",
+   "remove": [
+    {
+     "text": "villads",
+     "type": "navn-kendt-småt"
+    },
+    {
+     "text": "oscar",
+     "type": "navn-kendt-småt"
+    },
+    {
+     "text": "sofie",
+     "type": "navn-kendt-småt"
+    }
+   ],
+   "keep": [
+    "skal med",
+    "på tur"
+   ]
+  },
+  {
+   "id": "l03",
+   "text": "ring til camilla efter kl. 15, hun ved besked",
+   "remove": [
+    {
+     "text": "camilla",
+     "type": "navn-ukendt-småt"
+    }
+   ],
+   "keep": [
+    "efter kl. 15",
+    "hun ved besked"
+   ]
+  },
+  {
+   "id": "l04",
+   "text": "tobias og mille skal med i svømmehallen på fredag",
+   "remove": [
+    {
+     "text": "tobias",
+     "type": "navn-ukendt-småt"
+    },
+    {
+     "text": "mille",
+     "type": "navn-ukendt-småt"
+    }
+   ],
+   "keep": [
+    "skal med i svømmehallen på fredag"
+   ]
+  },
+  {
+   "id": "l05",
+   "text": "mormor birgit henter frida i dag",
+   "remove": [
+    {
+     "text": "birgit",
+     "type": "navn-ukendt-småt"
+    },
+    {
+     "text": "frida",
+     "type": "navn-kendt-småt"
+    }
+   ],
+   "keep": [
+    "henter",
+    "i dag"
+   ]
+  },
+  {
+   "id": "l06",
+   "text": "vi har talt med karen, og hun kommer også",
+   "remove": [
+    {
+     "text": "karen",
+     "type": "navn-ukendt-småt"
+    }
+   ],
+   "keep": [
+    "og hun kommer også"
+   ]
+  },
+  {
+   "id": "l07",
+   "text": "tak for i dag\nmvh lone",
+   "remove": [
+    {
+     "text": "lone",
+     "type": "navn-kendt-småt"
+    }
+   ],
+   "keep": [
+    "tak for i dag"
+   ]
+  },
+  {
+   "id": "l08",
+   "text": "kan emma og ingeborg komme til jesper på lørdag?",
+   "remove": [
+    {
+     "text": "emma",
+     "type": "navn-kendt-småt"
+    },
+    {
+     "text": "ingeborg",
+     "type": "navn-ukendt-småt"
+    },
+    {
+     "text": "jesper",
+     "type": "navn-kendt-småt"
+    }
+   ],
+   "keep": [
+    "på lørdag"
+   ]
+  },
+  {
+   "id": "o16",
+   "text": "Vi skal bo her per 1. november, hans mor har en tom flaske, og solen skinner.",
+   "remove": [],
+   "keep": [
+    "Vi skal bo her per 1. november",
+    "hans mor",
+    "en tom flaske",
+    "og solen skinner"
+   ]
+  },
+  {
+   "id": "r01",
+   "text": "ring til oline og gudrun, de ved besked",
+   "remove": [
+    {
+     "text": "oline",
+     "type": "navn-sjælden-småt"
+    },
+    {
+     "text": "gudrun",
+     "type": "navn-sjælden-småt"
+    }
+   ],
+   "keep": [
+    "de ved besked"
+   ]
+  },
+  {
+   "id": "r02",
+   "text": "torvald henter hjem klokken tre i dag",
+   "remove": [
+    {
+     "text": "torvald",
+     "type": "navn-sjælden-småt"
+    }
+   ],
+   "keep": [
+    "henter hjem klokken tre i dag"
+   ]
+  },
+  {
+   "id": "r03",
+   "text": "vi talte med ingvild og ebbe i går",
+   "remove": [
+    {
+     "text": "ingvild",
+     "type": "navn-sjælden-småt"
+    },
+    {
+     "text": "ebbe",
+     "type": "navn-sjælden-småt"
+    }
+   ],
+   "keep": [
+    "i går"
+   ]
+  },
+  {
+   "id": "r04",
+   "text": "bertram og solveig skal på tur med hjalte",
+   "remove": [
+    {
+     "text": "bertram",
+     "type": "navn-sjælden-småt"
+    },
+    {
+     "text": "solveig",
+     "type": "navn-sjælden-småt"
+    },
+    {
+     "text": "hjalte",
+     "type": "navn-sjælden-småt"
+    }
+   ],
+   "keep": [
+    "skal på tur med"
+   ]
+  },
+  {
+   "id": "r05",
+   "text": "Thyra og Ludvig har fødselsdag på fredag",
+   "remove": [
+    {
+     "text": "Thyra",
+     "type": "navn-sjælden-stort"
+    },
+    {
+     "text": "Ludvig",
+     "type": "navn-sjælden-stort"
+    }
+   ],
+   "keep": [
+    "har fødselsdag på fredag"
+   ]
+  },
+  {
+   "id": "r06",
+   "text": "mormor britta henter tilly efter skole",
+   "remove": [
+    {
+     "text": "britta",
+     "type": "navn-sjælden-småt"
+    },
+    {
+     "text": "tilly",
+     "type": "navn-sjælden-småt"
+    }
+   ],
+   "keep": [
+    "henter",
+    "efter skole"
+   ]
+  },
+  {
+   "id": "r07",
+   "text": "Yrsa har det godt og Folmer kommer også.",
+   "remove": [
+    {
+     "text": "Yrsa",
+     "type": "navn-sjælden-stort"
+    },
+    {
+     "text": "Folmer",
+     "type": "navn-sjælden-stort"
+    }
+   ],
+   "keep": [
+    "kommer også"
+   ]
   }
  ]
 }

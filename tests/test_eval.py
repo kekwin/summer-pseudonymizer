@@ -26,8 +26,10 @@ class EvalGateTest(unittest.TestCase):
 
     def test_unknown_names(self):
         self.assertEqual(self.rec("navn-ukendt"), 1.0)
+        self.assertEqual(self.rec("navn-kendt-småt"), 1.0)
+        self.assertEqual(self.rec("navn-ukendt-småt"), 1.0)  # navnelisten (små bogstaver tæller)
         # kendt hul: ukendte navne først i en sætning uden NER. Må kun blive bedre.
-        self.assertGreaterEqual(self.rec("navn-ukendt-satsstart"), 0.4)
+        self.assertGreaterEqual(self.rec("navn-ukendt-satsstart"), 0.8)
 
     def test_overmasking_not_worse(self):
         self.assertLessEqual(self.r["overmaskering"]["andel"], 0.04)

@@ -26,8 +26,8 @@ se [docs/PRESIDIO.md](docs/PRESIDIO.md)).
 
 ## Status
 
-0.1.0 (20. oktober 2026): udtrukket fra summer-aulas filter. Evaluering: kerne 100 % på identifikatorer, kendte navne, stavefejl og ukendte navne
-midt i en sætning; ukendte navne først i en sætning 2 af 5 (4 af 5 med Presidio `md`). Første klient: summer-aula.
+0.1.0 (20. oktober 2026): udtrukket fra summer-aulas filter. Evaluering: 100 % på identifikatorer, kendte navne (også med småt), stavefejl og
+almindelige fornavne; **kendt hul: sjældne ukendte navne med småt (0 af 10)**; Presidio `md` hjælper på sjældne navne med stort. Første klient: summer-aula.
 
 ## Næste skridt
 

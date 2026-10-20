@@ -72,7 +72,24 @@ class PseudoTest(unittest.TestCase):
 
     def test_trigger_words(self):
         out = self.clean("Mormor Birgit henter, og onkel Jens Hansen kommer").text
-        self.assertEqual(out, "Mormor Person-? henter, og onkel Person-? kommer")
+        for gone in ("Birgit", "Jens", "Hansen"):
+            self.assertNotIn(gone, out)
+        self.assertTrue(out.startswith("Mormor Person-?") and "onkel Person-?" in out)
+
+    def test_common_first_names_net_also_lowercase(self):
+        out = self.clean("ring til camilla og tobias, mille kommer også, og karen siger tak").text
+        for gone in ("camilla", "tobias", "mille", "karen"):
+            self.assertNotIn(gone, out)
+        self.assertTrue(out.endswith("siger tak"))
+
+    def test_names_that_are_common_words_are_left_alone(self):
+        text = "Vi skal bo her per 1. november, hans mor har en tom flaske i solen."
+        self.assertEqual(self.clean(text).text, text)
+
+    def test_common_names_respect_protected_and_allowed(self):
+        self.store.add_protected(["Camilla"])
+        p = Pseudonymizer(self.store)
+        self.assertEqual(p.clean("camilla og Tobias", allowed={"tobias"}).text, "camilla og Tobias")
 
     def test_extra_words_flagged_by_user(self):
         out = Pseudonymizer(self.store, ["Zorro"]).clean("Zorros mor og zorro").text
