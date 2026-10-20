@@ -12,7 +12,8 @@ Fælles regler: [summer-hub/CLAUDE.md](https://github.com/kekwin/summer-hub/blob
 - **Kernen har ingen afhængigheder** (kun standardbibliotek). Presidio/spaCy kun som valgfrit lag.
 - **Fejl lukker.** Er motoren i tvivl, skal klienten få "tilbehold", ikke ufiltreret tekst.
 - Motoren kender ikke Aula eller andre klienter. Klient-specifik viden (felter, trådtyper, hvidlister) hører hjemme i klienten.
-- Ingen licens valgt endnu (ejeren vælger).
+- **Licens: MIT**, ejer "Kewin Sommer Pedersen" (valgt 20. oktober 2026). README skal blive ved at sige, at værktøjet ikke garanterer
+  anonymisering.
 
 ## Kør og test
 
@@ -33,5 +34,5 @@ almindelige fornavne; **kendt hul: sjældne ukendte navne med småt (0 af 10)**;
 
 1. Lad summer-aula bruge motoren (pin til commit-SHA i Dockerfile) og fjerne sin egen kopi.
 2. Større syntetisk korpus og flag-og-tillad-løkken som bibliotek ([docs/ROADMAP.md](docs/ROADMAP.md)).
-3. Tag versioner og vælg en licens (ejeren).
+3. Tag versioner.
 4. Idé: træning/finjustering på ejerens stationære computer; aldrig på rigtige data i dette repo.

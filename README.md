@@ -10,7 +10,10 @@ der skal bevares. Første klient er [summer-aula](https://github.com/kekwin/summ
 
 > **Offentligt repo, ingen hemmeligheder.** Her ligger kun kode, danske ordlister og et syntetisk korpus med opdigtede navne. Rigtige data,
 > token-lagre (de indeholder rigtige navne) og modeller trænet på rigtige data hører aldrig hjemme her; en test (`tests/test_no_secrets.py`)
-> holder øje med det. Ingen licens er valgt endnu (alle rettigheder forbeholdt, til ejeren vælger).
+> holder øje med det.
+>
+> **Licens:** [MIT](LICENSE). **Ingen garanti:** anonymisering bliver aldrig 100 %. Værktøjet nedbringer risikoen, men kan overse navne og
+> identificerende omskrivninger; brug det ikke som eneste beskyttelse af følsomme data.
 
 ## Eksempel
 
