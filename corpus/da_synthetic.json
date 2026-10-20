@@ -1203,6 +1203,1459 @@
    "keep": [
     "kommer også"
    ]
+  },
+  {
+   "id": "nl-topp1000-s0",
+   "text": "ring til patrycja, hun ved besked",
+   "remove": [
+    {
+     "text": "patrycja",
+     "type": "liste-topp1000-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-t0",
+   "text": "Patrycja har det fint i dag.",
+   "remove": [
+    {
+     "text": "Patrycja",
+     "type": "liste-topp1000-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-s1",
+   "text": "klavs henter i dag kl. 15",
+   "remove": [
+    {
+     "text": "klavs",
+     "type": "liste-topp1000-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-t1",
+   "text": "Klavs skal med på tur.",
+   "remove": [
+    {
+     "text": "Klavs",
+     "type": "liste-topp1000-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-s2",
+   "text": "vi mødtes med halfdan i parken",
+   "remove": [
+    {
+     "text": "halfdan",
+     "type": "liste-topp1000-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-t2",
+   "text": "Halfdan blev hentet tidligt.",
+   "remove": [
+    {
+     "text": "Halfdan",
+     "type": "liste-topp1000-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-s3",
+   "text": "kan richardt komme med på fredag?",
+   "remove": [
+    {
+     "text": "richardt",
+     "type": "liste-topp1000-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-t3",
+   "text": "Richardt og hendes far kommer til festen.",
+   "remove": [
+    {
+     "text": "Richardt",
+     "type": "liste-topp1000-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-s4",
+   "text": "mormor og beatrice bager kager",
+   "remove": [
+    {
+     "text": "beatrice",
+     "type": "liste-topp1000-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-t4",
+   "text": "Beatrice har fået en ny jakke.",
+   "remove": [
+    {
+     "text": "Beatrice",
+     "type": "liste-topp1000-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-s5",
+   "text": "hils sahar og sig tak for sidst",
+   "remove": [
+    {
+     "text": "sahar",
+     "type": "liste-topp1000-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-t5",
+   "text": "Sahar sover nu.",
+   "remove": [
+    {
+     "text": "Sahar",
+     "type": "liste-topp1000-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-s6",
+   "text": "brigitte skal på tur i morgen",
+   "remove": [
+    {
+     "text": "brigitte",
+     "type": "liste-topp1000-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-t6",
+   "text": "Brigitte har haft en god dag.",
+   "remove": [
+    {
+     "text": "Brigitte",
+     "type": "liste-topp1000-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-s7",
+   "text": "tak til elsebet for hjælpen",
+   "remove": [
+    {
+     "text": "elsebet",
+     "type": "liste-topp1000-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-topp1000-t7",
+   "text": "Elsebet ringede lige.",
+   "remove": [
+    {
+     "text": "Elsebet",
+     "type": "liste-topp1000-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-s0",
+   "text": "ring til bang, hun ved besked",
+   "remove": [
+    {
+     "text": "bang",
+     "type": "liste-m100-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-t0",
+   "text": "Bang har det fint i dag.",
+   "remove": [
+    {
+     "text": "Bang",
+     "type": "liste-m100-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-s1",
+   "text": "kronborg henter i dag kl. 15",
+   "remove": [
+    {
+     "text": "kronborg",
+     "type": "liste-m100-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-t1",
+   "text": "Kronborg skal med på tur.",
+   "remove": [
+    {
+     "text": "Kronborg",
+     "type": "liste-m100-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-s2",
+   "text": "vi mødtes med søgaard i parken",
+   "remove": [
+    {
+     "text": "søgaard",
+     "type": "liste-m100-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-t2",
+   "text": "Søgaard blev hentet tidligt.",
+   "remove": [
+    {
+     "text": "Søgaard",
+     "type": "liste-m100-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-s3",
+   "text": "kan hamilton komme med på fredag?",
+   "remove": [
+    {
+     "text": "hamilton",
+     "type": "liste-m100-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-t3",
+   "text": "Hamilton og hendes far kommer til festen.",
+   "remove": [
+    {
+     "text": "Hamilton",
+     "type": "liste-m100-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-s4",
+   "text": "mormor og bjerre bager kager",
+   "remove": [
+    {
+     "text": "bjerre",
+     "type": "liste-m100-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-t4",
+   "text": "Bjerre har fået en ny jakke.",
+   "remove": [
+    {
+     "text": "Bjerre",
+     "type": "liste-m100-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-s5",
+   "text": "hils ingemann og sig tak for sidst",
+   "remove": [
+    {
+     "text": "ingemann",
+     "type": "liste-m100-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-t5",
+   "text": "Ingemann sover nu.",
+   "remove": [
+    {
+     "text": "Ingemann",
+     "type": "liste-m100-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-s6",
+   "text": "pape skal på tur i morgen",
+   "remove": [
+    {
+     "text": "pape",
+     "type": "liste-m100-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-t6",
+   "text": "Pape har haft en god dag.",
+   "remove": [
+    {
+     "text": "Pape",
+     "type": "liste-m100-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-s7",
+   "text": "tak til capital for hjælpen",
+   "remove": [
+    {
+     "text": "capital",
+     "type": "liste-m100-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m100-t7",
+   "text": "Capital ringede lige.",
+   "remove": [
+    {
+     "text": "Capital",
+     "type": "liste-m100-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-s0",
+   "text": "ring til spencer, hun ved besked",
+   "remove": [
+    {
+     "text": "spencer",
+     "type": "liste-m20-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-t0",
+   "text": "Spencer har det fint i dag.",
+   "remove": [
+    {
+     "text": "Spencer",
+     "type": "liste-m20-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-s1",
+   "text": "gladys henter i dag kl. 15",
+   "remove": [
+    {
+     "text": "gladys",
+     "type": "liste-m20-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-t1",
+   "text": "Gladys skal med på tur.",
+   "remove": [
+    {
+     "text": "Gladys",
+     "type": "liste-m20-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-s2",
+   "text": "vi mødtes med walker i parken",
+   "remove": [
+    {
+     "text": "walker",
+     "type": "liste-m20-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-t2",
+   "text": "Walker blev hentet tidligt.",
+   "remove": [
+    {
+     "text": "Walker",
+     "type": "liste-m20-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-s3",
+   "text": "kan sergej komme med på fredag?",
+   "remove": [
+    {
+     "text": "sergej",
+     "type": "liste-m20-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-t3",
+   "text": "Sergej og hendes far kommer til festen.",
+   "remove": [
+    {
+     "text": "Sergej",
+     "type": "liste-m20-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-s4",
+   "text": "mormor og gareth bager kager",
+   "remove": [
+    {
+     "text": "gareth",
+     "type": "liste-m20-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-t4",
+   "text": "Gareth har fået en ny jakke.",
+   "remove": [
+    {
+     "text": "Gareth",
+     "type": "liste-m20-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-s5",
+   "text": "hils drost og sig tak for sidst",
+   "remove": [
+    {
+     "text": "drost",
+     "type": "liste-m20-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-t5",
+   "text": "Drost sover nu.",
+   "remove": [
+    {
+     "text": "Drost",
+     "type": "liste-m20-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-s6",
+   "text": "bailey skal på tur i morgen",
+   "remove": [
+    {
+     "text": "bailey",
+     "type": "liste-m20-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-t6",
+   "text": "Bailey har haft en god dag.",
+   "remove": [
+    {
+     "text": "Bailey",
+     "type": "liste-m20-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-s7",
+   "text": "tak til ashraf for hjælpen",
+   "remove": [
+    {
+     "text": "ashraf",
+     "type": "liste-m20-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m20-t7",
+   "text": "Ashraf ringede lige.",
+   "remove": [
+    {
+     "text": "Ashraf",
+     "type": "liste-m20-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-s0",
+   "text": "ring til cali, hun ved besked",
+   "remove": [
+    {
+     "text": "cali",
+     "type": "liste-m5-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-t0",
+   "text": "Cali har det fint i dag.",
+   "remove": [
+    {
+     "text": "Cali",
+     "type": "liste-m5-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-s1",
+   "text": "zaki henter i dag kl. 15",
+   "remove": [
+    {
+     "text": "zaki",
+     "type": "liste-m5-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-t1",
+   "text": "Zaki skal med på tur.",
+   "remove": [
+    {
+     "text": "Zaki",
+     "type": "liste-m5-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-s2",
+   "text": "vi mødtes med zanne i parken",
+   "remove": [
+    {
+     "text": "zanne",
+     "type": "liste-m5-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-t2",
+   "text": "Zanne blev hentet tidligt.",
+   "remove": [
+    {
+     "text": "Zanne",
+     "type": "liste-m5-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-s3",
+   "text": "kan bell komme med på fredag?",
+   "remove": [
+    {
+     "text": "bell",
+     "type": "liste-m5-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-t3",
+   "text": "Bell og hendes far kommer til festen.",
+   "remove": [
+    {
+     "text": "Bell",
+     "type": "liste-m5-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-s4",
+   "text": "mormor og reinert bager kager",
+   "remove": [
+    {
+     "text": "reinert",
+     "type": "liste-m5-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-t4",
+   "text": "Reinert har fået en ny jakke.",
+   "remove": [
+    {
+     "text": "Reinert",
+     "type": "liste-m5-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-s5",
+   "text": "hils richards og sig tak for sidst",
+   "remove": [
+    {
+     "text": "richards",
+     "type": "liste-m5-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-t5",
+   "text": "Richards sover nu.",
+   "remove": [
+    {
+     "text": "Richards",
+     "type": "liste-m5-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-s6",
+   "text": "elle skal på tur i morgen",
+   "remove": [
+    {
+     "text": "elle",
+     "type": "liste-m5-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-t6",
+   "text": "Elle har haft en god dag.",
+   "remove": [
+    {
+     "text": "Elle",
+     "type": "liste-m5-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-s7",
+   "text": "tak til jörg for hjælpen",
+   "remove": [
+    {
+     "text": "jörg",
+     "type": "liste-m5-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m5-t7",
+   "text": "Jörg ringede lige.",
+   "remove": [
+    {
+     "text": "Jörg",
+     "type": "liste-m5-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-s0",
+   "text": "ring til olakunle, hun ved besked",
+   "remove": [
+    {
+     "text": "olakunle",
+     "type": "liste-m1-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-t0",
+   "text": "Olakunle har det fint i dag.",
+   "remove": [
+    {
+     "text": "Olakunle",
+     "type": "liste-m1-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-s1",
+   "text": "kaius henter i dag kl. 15",
+   "remove": [
+    {
+     "text": "kaius",
+     "type": "liste-m1-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-t1",
+   "text": "Kaius skal med på tur.",
+   "remove": [
+    {
+     "text": "Kaius",
+     "type": "liste-m1-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-s2",
+   "text": "vi mødtes med gusta i parken",
+   "remove": [
+    {
+     "text": "gusta",
+     "type": "liste-m1-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-t2",
+   "text": "Gusta blev hentet tidligt.",
+   "remove": [
+    {
+     "text": "Gusta",
+     "type": "liste-m1-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-s3",
+   "text": "kan reinar komme med på fredag?",
+   "remove": [
+    {
+     "text": "reinar",
+     "type": "liste-m1-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-t3",
+   "text": "Reinar og hendes far kommer til festen.",
+   "remove": [
+    {
+     "text": "Reinar",
+     "type": "liste-m1-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-s4",
+   "text": "mormor og calma bager kager",
+   "remove": [
+    {
+     "text": "calma",
+     "type": "liste-m1-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-t4",
+   "text": "Calma har fået en ny jakke.",
+   "remove": [
+    {
+     "text": "Calma",
+     "type": "liste-m1-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-s5",
+   "text": "hils lourenco og sig tak for sidst",
+   "remove": [
+    {
+     "text": "lourenco",
+     "type": "liste-m1-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-t5",
+   "text": "Lourenco sover nu.",
+   "remove": [
+    {
+     "text": "Lourenco",
+     "type": "liste-m1-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-s6",
+   "text": "guldbrand skal på tur i morgen",
+   "remove": [
+    {
+     "text": "guldbrand",
+     "type": "liste-m1-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-t6",
+   "text": "Guldbrand har haft en god dag.",
+   "remove": [
+    {
+     "text": "Guldbrand",
+     "type": "liste-m1-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-s7",
+   "text": "tak til carling for hjælpen",
+   "remove": [
+    {
+     "text": "carling",
+     "type": "liste-m1-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m1-t7",
+   "text": "Carling ringede lige.",
+   "remove": [
+    {
+     "text": "Carling",
+     "type": "liste-m1-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-s0",
+   "text": "ring til urooj, hun ved besked",
+   "remove": [
+    {
+     "text": "urooj",
+     "type": "liste-m0-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-t0",
+   "text": "Urooj har det fint i dag.",
+   "remove": [
+    {
+     "text": "Urooj",
+     "type": "liste-m0-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-s1",
+   "text": "saadieh henter i dag kl. 15",
+   "remove": [
+    {
+     "text": "saadieh",
+     "type": "liste-m0-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-t1",
+   "text": "Saadieh skal med på tur.",
+   "remove": [
+    {
+     "text": "Saadieh",
+     "type": "liste-m0-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-s2",
+   "text": "vi mødtes med sadieh i parken",
+   "remove": [
+    {
+     "text": "sadieh",
+     "type": "liste-m0-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-t2",
+   "text": "Sadieh blev hentet tidligt.",
+   "remove": [
+    {
+     "text": "Sadieh",
+     "type": "liste-m0-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-s3",
+   "text": "kan anok komme med på fredag?",
+   "remove": [
+    {
+     "text": "anok",
+     "type": "liste-m0-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-t3",
+   "text": "Anok og hendes far kommer til festen.",
+   "remove": [
+    {
+     "text": "Anok",
+     "type": "liste-m0-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-s4",
+   "text": "mormor og ombretta bager kager",
+   "remove": [
+    {
+     "text": "ombretta",
+     "type": "liste-m0-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-t4",
+   "text": "Ombretta har fået en ny jakke.",
+   "remove": [
+    {
+     "text": "Ombretta",
+     "type": "liste-m0-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-s5",
+   "text": "hils fomia og sig tak for sidst",
+   "remove": [
+    {
+     "text": "fomia",
+     "type": "liste-m0-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-t5",
+   "text": "Fomia sover nu.",
+   "remove": [
+    {
+     "text": "Fomia",
+     "type": "liste-m0-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-s6",
+   "text": "naail skal på tur i morgen",
+   "remove": [
+    {
+     "text": "naail",
+     "type": "liste-m0-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-t6",
+   "text": "Naail har haft en god dag.",
+   "remove": [
+    {
+     "text": "Naail",
+     "type": "liste-m0-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-s7",
+   "text": "tak til geirmundur for hjælpen",
+   "remove": [
+    {
+     "text": "geirmundur",
+     "type": "liste-m0-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-m0-t7",
+   "text": "Geirmundur ringede lige.",
+   "remove": [
+    {
+     "text": "Geirmundur",
+     "type": "liste-m0-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-s0",
+   "text": "ring til valtyra, hun ved besked",
+   "remove": [
+    {
+     "text": "valtyra",
+     "type": "liste-uregistreret-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-t0",
+   "text": "Valtyra har det fint i dag.",
+   "remove": [
+    {
+     "text": "Valtyra",
+     "type": "liste-uregistreret-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-s1",
+   "text": "zelmira henter i dag kl. 15",
+   "remove": [
+    {
+     "text": "zelmira",
+     "type": "liste-uregistreret-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-t1",
+   "text": "Zelmira skal med på tur.",
+   "remove": [
+    {
+     "text": "Zelmira",
+     "type": "liste-uregistreret-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-s2",
+   "text": "vi mødtes med orvokka i parken",
+   "remove": [
+    {
+     "text": "orvokka",
+     "type": "liste-uregistreret-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-t2",
+   "text": "Orvokka blev hentet tidligt.",
+   "remove": [
+    {
+     "text": "Orvokka",
+     "type": "liste-uregistreret-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-s3",
+   "text": "kan brynhilde komme med på fredag?",
+   "remove": [
+    {
+     "text": "brynhilde",
+     "type": "liste-uregistreret-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-t3",
+   "text": "Brynhilde og hendes far kommer til festen.",
+   "remove": [
+    {
+     "text": "Brynhilde",
+     "type": "liste-uregistreret-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-s4",
+   "text": "mormor og thorgunna bager kager",
+   "remove": [
+    {
+     "text": "thorgunna",
+     "type": "liste-uregistreret-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-t4",
+   "text": "Thorgunna har fået en ny jakke.",
+   "remove": [
+    {
+     "text": "Thorgunna",
+     "type": "liste-uregistreret-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-s5",
+   "text": "hils ingvarda og sig tak for sidst",
+   "remove": [
+    {
+     "text": "ingvarda",
+     "type": "liste-uregistreret-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-t5",
+   "text": "Ingvarda sover nu.",
+   "remove": [
+    {
+     "text": "Ingvarda",
+     "type": "liste-uregistreret-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-s6",
+   "text": "sunnivaa skal på tur i morgen",
+   "remove": [
+    {
+     "text": "sunnivaa",
+     "type": "liste-uregistreret-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-t6",
+   "text": "Sunnivaa har haft en god dag.",
+   "remove": [
+    {
+     "text": "Sunnivaa",
+     "type": "liste-uregistreret-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-s7",
+   "text": "tak til halfrida for hjælpen",
+   "remove": [
+    {
+     "text": "halfrida",
+     "type": "liste-uregistreret-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-uregistreret-t7",
+   "text": "Halfrida ringede lige.",
+   "remove": [
+    {
+     "text": "Halfrida",
+     "type": "liste-uregistreret-start"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-h01",
+   "text": "ring til anne-mette og lise-lotte i morgen",
+   "remove": [
+    {
+     "text": "anne-mette",
+     "type": "navn-dobbelt-småt"
+    },
+    {
+     "text": "lise-lotte",
+     "type": "navn-dobbelt-småt"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-h02",
+   "text": "Anne-Mette og Per-Olof kommer også.",
+   "remove": [
+    {
+     "text": "Anne-Mette",
+     "type": "navn-dobbelt-stort"
+    },
+    {
+     "text": "Per-Olof",
+     "type": "navn-dobbelt-stort"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-h03",
+   "text": "Thorvalds mor og oline's far henter dem.",
+   "remove": [
+    {
+     "text": "Thorvalds",
+     "type": "navn-genitiv"
+    },
+    {
+     "text": "oline's",
+     "type": "navn-genitiv"
+    }
+   ],
+   "keep": [
+    "mor og"
+   ]
+  },
+  {
+   "id": "nl-h04",
+   "text": "Det er Oline K. og torvald b. der skal med.",
+   "remove": [
+    {
+     "text": "Oline K.",
+     "type": "navn-initial"
+    },
+    {
+     "text": "torvald b.",
+     "type": "navn-initial"
+    }
+   ],
+   "keep": [
+    "der skal med"
+   ]
+  },
+  {
+   "id": "nl-h05",
+   "text": "RING TIL OLINE OG GUDRUN I DAG",
+   "remove": [
+    {
+     "text": "OLINE",
+     "type": "navn-versaler"
+    },
+    {
+     "text": "GUDRUN",
+     "type": "navn-versaler"
+    }
+   ],
+   "keep": []
+  },
+  {
+   "id": "nl-h06",
+   "text": "Ebbe og Hjalte har bygget en kæmpe borg.",
+   "remove": [
+    {
+     "text": "Ebbe",
+     "type": "navn-start-sjælden"
+    },
+    {
+     "text": "Hjalte",
+     "type": "navn-start-sjælden"
+    }
+   ],
+   "keep": [
+    "har bygget en kæmpe borg"
+   ]
+  },
+  {
+   "id": "nl-h07",
+   "text": "Gudrun, Ingvild og Solveig er med på turen.",
+   "remove": [
+    {
+     "text": "Gudrun",
+     "type": "navn-start-sjælden"
+    },
+    {
+     "text": "Ingvild",
+     "type": "navn-start-sjælden"
+    },
+    {
+     "text": "Solveig",
+     "type": "navn-start-sjælden"
+    }
+   ],
+   "keep": [
+    "er med på turen"
+   ]
+  },
+  {
+   "id": "nl-h08",
+   "text": "tak til mie, nanna og ellen for kagerne",
+   "remove": [
+    {
+     "text": "mie",
+     "type": "navn-sjælden-småt"
+    },
+    {
+     "text": "nanna",
+     "type": "navn-sjælden-småt"
+    },
+    {
+     "text": "ellen",
+     "type": "navn-sjælden-småt"
+    }
+   ],
+   "keep": [
+    "for kagerne"
+   ]
+  },
+  {
+   "id": "nl-k01",
+   "text": "Vi skal tage på tur, og børnene har en sten i skoen.",
+   "remove": [],
+   "keep": [
+    "tage på tur",
+    "en sten i skoen"
+   ]
+  },
+  {
+   "id": "nl-k02",
+   "text": "Det blev en lykke at få en kaj ved havnen.",
+   "remove": [],
+   "keep": [
+    "en kaj ved havnen"
+   ]
+  },
+  {
+   "id": "nl-k03",
+   "text": "Der kommer storm i morgen, så vi holder os inde.",
+   "remove": [],
+   "keep": [
+    "Der kommer storm i morgen"
+   ]
+  },
+  {
+   "id": "nl-k04",
+   "text": "Den vilde saga om silke og anker var spændende.",
+   "remove": [],
+   "keep": [
+    "Den vilde saga"
+   ]
+  },
+  {
+   "id": "nl-k05",
+   "text": "Pigerne har en bil, et tog og en bold med i dag.",
+   "remove": [],
+   "keep": [
+    "en bil, et tog og en bold"
+   ]
+  },
+  {
+   "id": "nl-k06",
+   "text": "Vi skal sætte pris på maj, juni og juli, og hans mor kommer.",
+   "remove": [],
+   "keep": [
+    "maj, juni og juli",
+    "hans mor kommer"
+   ]
+  },
+  {
+   "id": "nl-k07",
+   "text": "Husk rosa tøj, gule støvler og en blå hue til tirsdag.",
+   "remove": [],
+   "keep": [
+    "gule støvler",
+    "en blå hue"
+   ]
+  },
+  {
+   "id": "nl-k08",
+   "text": "Bær tøjet i en pose, og find en frugt og en mælk til frokost.",
+   "remove": [],
+   "keep": [
+    "en frugt og en mælk til frokost"
+   ]
+  },
+  {
+   "id": "nl-k09",
+   "text": "Det koster 5 mia. kr., og mia. betyder milliard.",
+   "remove": [],
+   "keep": [
+    "5 mia. kr."
+   ]
+  },
+  {
+   "id": "nl-k10",
+   "text": "Efter sommerferien er der fødselsdag, fest og kage i stuen.",
+   "remove": [],
+   "keep": [
+    "fødselsdag, fest og kage i stuen"
+   ]
   }
  ]
 }

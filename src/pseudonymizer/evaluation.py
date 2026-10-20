@@ -33,16 +33,17 @@ def _present(needle: str, haystack: str) -> bool:
     return needle.casefold() in haystack.casefold()
 
 
-def build(corpus: dict, layers=()) -> Pseudonymizer:
+def build(corpus: dict, layers=(), **options) -> Pseudonymizer:
     store = TokenStore()
     for r in corpus.get("registry", []):
         store.token(r["prefix"], r["key"], r["names"], unique_first_name=bool(r.get("unique_first_name")))
     store.add_protected(corpus.get("protected", []))
-    return Pseudonymizer(store, extra_words=corpus.get("extra_words", ()), layers=layers)
+    return Pseudonymizer(store, extra_words=corpus.get("extra_words", ()), layers=layers, **options)
 
 
-def evaluate(corpus: dict, layers=(), default_strict: int = 1) -> dict:
-    pseudo = build(corpus, layers)
+def evaluate(corpus: dict, layers=(), default_strict: int = 1, **options) -> dict:
+    """`options` gives videre til Pseudonymizer (fx min_count=20)."""
+    pseudo = build(corpus, layers, **options)
     allowed = set(corpus.get("allowed", []))
     by_type: dict[str, list[int]] = defaultdict(lambda: [0, 0])  # [fjernet, i alt]
     leaks, lost, withheld = [], [], []
@@ -92,6 +93,8 @@ def main(argv=None) -> int:
     ap.add_argument("corpus")
     ap.add_argument("--presidio", action="store_true", help="tilføj Presidio-laget (kræver [presidio] og en dansk spaCy-model)")
     ap.add_argument("--model", default="da_core_news_md", help="spaCy-model til Presidio")
+    ap.add_argument("--min-count", type=int, help="tærskel for navnelisten (standard: motorens)")
+    ap.add_argument("--surname-rank", type=int, default=0, help="tag de N mest frekvente efternavne med")
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args(argv)
     sys.stdout.reconfigure(encoding="utf-8")
@@ -102,7 +105,10 @@ def main(argv=None) -> int:
         from .presidio_layer import PresidioLayer
         layers = (PresidioLayer(model=a.model),)
         title = f"(kerne + Presidio, {a.model})"
-    r = evaluate(corpus, layers)
+    options = {"surname_rank": a.surname_rank}
+    if a.min_count is not None:
+        options["min_count"] = a.min_count
+    r = evaluate(corpus, layers, **options)
     print(json.dumps(r, ensure_ascii=False, indent=1) if a.json else format_report(r, title))
     return 0
 

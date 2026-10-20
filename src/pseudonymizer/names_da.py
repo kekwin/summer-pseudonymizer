@@ -1,7 +1,20 @@
-"""Almindelige danske fornavne (små bogstaver). Bruges som et billigt net for ukendte navne, også når de er skrevet med småt eller
-står først i en sætning. Listen er skrevet efter hukommelsen af udbredte navne og er hverken fuldstændig eller en kilde til noget som helst:
-den er et heuristisk net. Navne, der også er almindelige danske ord, er med vilje udeladt (se AMBIGUOUS).
+"""Danske fornavne (og valgfrit efternavne) som et billigt net for ukendte navne, også når de er skrevet med småt eller står først i en
+sætning.
+
+Hovedlisten ligger i `data/fornavne_da.txt` (bygget af `scripts/build_names.py` af offentlig statistik, se docs/NAVNELISTE.md). Den
+gamle, håndskrevne liste (ca. 400 navne) er bevaret som `LEGACY_FIRST_NAMES` og er altid med. Navne, der også er almindelige danske ord,
+er fjernet (automatisk ordfilter ved bygningen + `AMBIGUOUS`).
+
+Tærsklen `min_count` styrer, hvor sjældne navne der er med: et navn er med, hvis det er blandt de 1000 mest frekvente hos Danmarks
+Statistik, eller har mindst `min_count` forekomster med stort i et dansk nyhedskorpus (ca. 20 mio. ord). `0` = alle registrerede navne
+(mindst 3 bærere).
 """
+from __future__ import annotations
+
+from functools import lru_cache
+from importlib import resources
+
+from .lexicon import ALWAYS_OK, STARTERS, WEEKDAYS_MONTHS
 
 FEMALE = """
 emma ida freja ella alma sofia sophia clara klara karla olivia agnes lærke mathilde josefine josephine laura marie anna sara sarah
@@ -27,8 +40,45 @@ troels uffe ulrik valdemar vagn verner vilhelm villads vincent walter wilhelm å
 alfred august bo
 """.split()
 
-# Navne, der også er almindelige danske ord, og som derfor ikke må bruges som net (ellers ødelægges almindelig tekst).
+# Manuel undtagelsesliste: navne, der også er almindelige danske ord (eller forkortelser), og som derfor ikke må bruges som net (ellers
+# ødelægges almindelig tekst). Gælder oven i det automatiske ordfilter (scripts/build_names.py).
 # De findes stadig som kendte navne, hvis klienten kender personen.
-AMBIGUOUS = frozenset("bo per hans rune august bent dan mark rose sol tom maj ask bjørn liv rene".split())
+AMBIGUOUS = frozenset("""bo per hans rune august bent dan mark rose sol tom maj ask bjørn liv rene max sky ven mor far barn dag god lys sne
+ånd rosa drue karry adm ngo sars eid dat will aske chili ravn nikkel hindi gamma alpha java jeans alm find trille sultan silke birk flora ane""".split())
 
-COMMON_FIRST_NAMES = frozenset(n for n in set(FEMALE) | set(MALE) if len(n) >= 3 and n not in AMBIGUOUS and "-" not in n)
+LEGACY_FIRST_NAMES = frozenset(n for n in set(FEMALE) | set(MALE) if len(n) >= 3 and n not in AMBIGUOUS and "-" not in n)
+COMMON_FIRST_NAMES = LEGACY_FIRST_NAMES  # bagudkompatibelt navn
+
+DEFAULT_MIN_COUNT = 0
+_NOT_NAMES = STARTERS | ALWAYS_OK | WEEKDAYS_MONTHS | AMBIGUOUS
+
+
+def _rows(filename: str):
+    text = resources.files(__package__).joinpath("data", filename).read_text(encoding="utf-8")
+    for line in text.splitlines():
+        if line and not line.startswith("#"):
+            yield line.split("	")
+
+
+@lru_cache(maxsize=8)
+def first_names(min_count: int = DEFAULT_MIN_COUNT) -> frozenset:
+    """Fornavne (små bogstaver) til opslag. Se modulets beskrivelse af `min_count`."""
+    out = set(LEGACY_FIRST_NAMES)
+    for name, rank, mentions in _rows("fornavne_da.txt"):
+        if int(rank) > 0 or int(mentions) >= min_count:
+            out.add(name)
+    return frozenset(out - _NOT_NAMES)
+
+
+@lru_cache(maxsize=1)
+def core_names() -> frozenset:
+    """Den håndskrevne liste og de 1000 mest frekvente navne hos Danmarks Statistik."""
+    return first_names(10**9)
+
+
+@lru_cache(maxsize=8)
+def surnames(max_rank: int = 0) -> frozenset:
+    """De `max_rank` mest frekvente efternavne (højst 5000; 0 = ingen)."""
+    if max_rank <= 0:
+        return frozenset()
+    return frozenset(n for n, r in _rows("efternavne_da.txt") if int(r) <= max_rank) - _NOT_NAMES

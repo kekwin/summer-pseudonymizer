@@ -9,7 +9,7 @@ from .store import DEFAULT_GROUPS, DEFAULT_PREFIXES, TokenStore
 from .textclean import PLACEHOLDERS, find_identifiers, html_to_text, scrub
 from .topics import find_topics
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
     "AMBIGUOUS_CHILD", "AMBIGUOUS_PERSON", "Cleaned", "DEFAULT_GROUPS", "DEFAULT_PREFIXES", "Layer", "PLACEHOLDERS",

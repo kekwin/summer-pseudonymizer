@@ -12,7 +12,7 @@ FORBIDDEN = REGEXES
 OWNER = "Kewin Sommer Pedersen"  # copyright-linjen i LICENSE
 # Opdigtede eksempler må stå: e-mails og links på example.invalid, og de falske CPR-numre i korpusset.
 EMAIL = re.compile(r"[\w.+-]+@(?!example\.invalid)[\w-]+(?:\.[\w-]+)+")
-URL = re.compile(r"https?://(?!example\.invalid|github\.com|presidio|spacy|microsoft\.github\.io|explosion\.ai|pypi\.org|docs\.python\.org)[^\s\"')]+")
+URL = re.compile(r"https?://(?!example\.invalid|github\.com|presidio|spacy|microsoft\.github\.io|explosion\.ai|pypi\.org|docs\.python\.org|sprogtek-ressources\.digst\.govcloud\.dk|sprogteknologi\.dk|downloads\.wortschatz-leipzig\.de|wortschatz\.uni-leipzig\.de|www\.dst\.dk|creativecommons\.org)[^\s\"')]+")
 
 
 def tracked_files():

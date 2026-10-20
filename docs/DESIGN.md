@@ -6,7 +6,7 @@
 |---|---|
 | Rens af CPR, telefon, adresse, links m.m. | Ved hvilke felter i dens datakilde der er navne, og hvem der er hvem |
 | Token-lager: samme person, samme token, aldrig genbrug | Fodrer lageret med kendte personer (`store.token(prefix, nøgle, navne)`) |
-| Navnegenkendelse (kendte, almindelige fornavne, stavefejl), udløsere, ukendte store ord | Vælger niveauet (`strict` 0, 1 eller 2) pr. tekst |
+| Navnegenkendelse (kendte, ca. 133.000 danske fornavne med tærskel `min_count`, stavefejl), udløsere, ukendte store ord | Vælger niveauet (`strict` 0, 1 eller 2) pr. tekst |
 | Lækagevagt | Beslutter, hvad der sker, når vagten udløses (typisk: tilbehold hele teksten) |
 | Emneliste (`find_topics`) | Afgør, hvilke emner der må frigives, og til hvem |
 | Evalueringsværktøj og korpus | Egne tests, og sin egen mærkede prøve (lokalt) |
@@ -53,7 +53,8 @@ tilbageværende identifikatorer, kendte navne, `udløser + stort ord` og flagged
 ## Hvad motoren ikke kan
 
 - Identificerende omskrivninger ("drengen med nøddeallergien i 2.B") kan ingen mekanisk metode udelukke; emnelisten og klientens regler dækker dem.
-- **Sjældne, ukendte navne med småt** fanges hverken af kernen eller af Presidio (se PRESIDIO.md). Kendte navne og almindelige fornavne fanges
-  uanset store/små bogstaver. Resten dækkes af klientens flagning, strengere regler og emnelisten.
+- **Navne, der ikke står på navnelisten** (under 3 bærere i Danmark, nye stavemåder, stavefejl i sjældne navne) og som er skrevet med småt, fanges ikke
+  (se NAVNELISTE.md). Kendte navne og alle navne på listen (ca. 133.000 ved `min_count=0`) fanges uanset store/små bogstaver. Resten dækkes af klientens
+  flagning, strengere regler og emnelisten.
 - Ukendte navne først i en sætning fanges af navnelisten, NER-laget eller niveau 2.
 - Billeder, lyd og filer behandles ikke. Klienten skal selv udelukke dem.

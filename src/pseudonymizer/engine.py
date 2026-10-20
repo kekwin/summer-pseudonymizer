@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 from typing import Protocol
 
 from .lexicon import ALWAYS_OK, STARTERS, WEEKDAYS_MONTHS
-from .names_da import COMMON_FIRST_NAMES
+from . import names_da
 from .store import TokenStore
 from .textclean import find_identifiers, scrub
 from .topics import find_topics
@@ -30,9 +30,10 @@ _TRIGGER_RE = re.compile(
 )
 _CAP_WORD = re.compile(r"[A-ZÆØÅ][\wæøåÆØÅ'-]*")
 _ACRONYM_HYPHEN = re.compile(r"^[A-ZÆØÅ]{2,}-")
-_COMMON_NAMES_RE = re.compile(
-    r"(?<!\w)(?P<n>" + "|".join(re.escape(n) for n in sorted(COMMON_FIRST_NAMES, key=len, reverse=True)) + r")(?P<g>['’]?s)?(?!\w)",
-    re.I,
+# Opslag i et sæt på hele ord (ikke en regex med titusinder af alternativer): ét ord (evt. med bindestreg), valgfri genitiv
+# ('s / s) og valgfri initial ("Oline L."). Store/små bogstaver er ligegyldige.
+_WORD_RE = re.compile(
+    r"(?<![\w'’])(?P<n>[\wæøåÆØÅ]+(?:-[\wæøåÆØÅ]+)*)(?P<g>['’]s)?(?P<i>\s(?-i:[A-ZÆØÅ])\.)?(?!\w)"
 )
 _TOKEN_LIKE = re.compile(r"^(?:[A-ZÆØÅ][a-zæøå]+)-(?:\d+|\?)")
 
@@ -85,7 +86,10 @@ class Cleaned:
 
 
 class Pseudonymizer:
-    def __init__(self, store: TokenStore, extra_words=(), layers=(), common_names: bool = True):
+    def __init__(self, store: TokenStore, extra_words=(), layers=(), common_names: bool = True,
+                 min_count: int = names_da.DEFAULT_MIN_COUNT, surname_rank: int = 0):
+        """`min_count`: hvor sjældne fornavne der er med i navnelisten (0 = alle registrerede navne, højere = kun de mere almindelige;
+        se names_da og docs/NAVNELISTE.md). `surname_rank`: de N mest frekvente efternavne tages også med (0 = fra, højst 5000)."""
         self.store = store
         self.layers = list(layers)
         self.extra_words = [w for w in extra_words if w and len(w.strip()) >= 2]
@@ -98,6 +102,9 @@ class Pseudonymizer:
         self._fuzzy_index: dict[str, list] = {}
         self.fuzzy = True
         self.common_names = common_names
+        self.min_count = min_count
+        self.surname_rank = surname_rank
+        self._name_set = None
         self.trace: list | None = None   # sættes af en visning: [(token, original, lag)]
         if self.extra_words:
             alt = "|".join(re.escape(w.strip()) for w in sorted(self.extra_words, key=len, reverse=True))
@@ -182,17 +189,41 @@ class Pseudonymizer:
         return _CAP_WORD.sub(rep, text)
 
     # ------------------------------------------------------------------ almindelige danske fornavne (også med småt)
+    def _names(self) -> frozenset:
+        if self._name_set is None:  # ordnet og delt mellem instanser via lru_cache i names_da
+            self._name_set = names_da.first_names(self.min_count) | names_da.surnames(self.surname_rank)
+        return self._name_set
+
     def _common_names(self, text: str, allowed=frozenset()) -> str:
+        names = self._names()
+        core = names_da.core_names()
         skip = {a.casefold() for a in set(allowed) | self.store.protected}
 
+        def is_name(w: str) -> bool:
+            if w in names:
+                return True
+            return "-" in w and all(len(p) >= 2 and p in names for p in w.split("-"))  # dobbeltnavne: "anne-mette"
+
         def rep(m: re.Match) -> str:
-            name = m.group("n")
-            if name.casefold() in skip or name.casefold() in STARTERS or name.casefold() in ALWAYS_OK:
+            w = m.group("n").casefold()
+            genitive = bool(m.group("g"))
+            raw = m.group("n")
+            if len(w) < 3 or (raw.isupper() and len(w) <= 4 and w not in core):  # forkortelser: PAU, DSB, ...
+                return m.group(0)
+            if re.search(r"\d\s?$", text[max(0, m.start() - 3):m.start()]):  # "5 mia. kr"
+                return m.group(0)
+            if re.search(r"\d\s?$", text[max(0, m.start() - 3):m.start()]):  # "5 mia. kr"
+                return m.group(0)
+            if not is_name(w):
+                if genitive or not w.endswith("s") or len(w) < 4 or not is_name(w[:-1]):  # "Emmas"
+                    return m.group(0)
+                w, genitive = w[:-1], True
+            if w in skip or w in STARTERS or w in ALWAYS_OK:
                 return m.group(0)
             self._trace(AMBIGUOUS_PERSON, m.group(0), "navneliste")
-            return AMBIGUOUS_PERSON + ("'s" if m.group("g") else "")
+            return AMBIGUOUS_PERSON + ("'s" if genitive else "")
 
-        return _COMMON_NAMES_RE.sub(rep, text)
+        return _WORD_RE.sub(rep, text)
 
     # ------------------------------------------------------------------ ekstra lag (NER/Presidio)
     @staticmethod

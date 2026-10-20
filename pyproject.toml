@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "summer-pseudonymizer"
-version = "0.1.0"
+version = "0.2.0"
 description = "Dansk pseudonymisering af tekst med faste tokens, lækagevagt og evaluering (valgfrit med Presidio)"
 requires-python = ">=3.11"
 license = "MIT"
@@ -17,3 +17,6 @@ presidio = ["presidio-analyzer>=2.2", "spacy>=3.7"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+pseudonymizer = ["data/*.txt"]

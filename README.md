@@ -41,8 +41,10 @@ print(c.ok)     # True: vagten fandt intet tilbage
 4. **Udløsere:** "mormor Birgit", "onkel Jens", "vikar Karen" -> navnet maskeres.
 5. **Flaggede ord** (klientens egen liste).
 6. **Valgfrie lag** (Presidio/NER): ukendte personnavne.
-7. **Almindelige danske fornavne** (indbygget liste, også med småt): "ring til camilla" -> `Person-?`. Navne, der også er almindelige ord
-   ("bo", "per", "hans"), er udeladt.
+7. **Danske fornavne** (indbygget liste på ca. 133.000 navne fra Danmarks Statistik, også med småt og først i en sætning): "ring til oline" -> `Person-?`.
+   Slås op i et sæt på hele ord (genitiv, apostrof, initial, dobbeltnavne); navne, der også er almindelige ord ("bo", "per", "hans", "maj"), er filtreret
+   fra. Hvor sjældne navne der er med, styres af `Pseudonymizer(..., min_count=N)` (standard 0 = alle; 5 = kun de mere almindelige), og `surname_rank=N`
+   tager de N mest frekvente efternavne med. Se [docs/NAVNELISTE.md](docs/NAVNELISTE.md) for kilder, licens (CC BY 4.0) og målinger.
 8. **Streng maskering** (valgfri): danske navneord skrives med småt, så et stort ord midt i en sætning er næsten altid et navn eller sted
    og maskeres, medmindre klienten har tilladt det. Niveau 2 tager også ord først i en sætning.
 9. **Lækagevagt:** står noget tilbage, tilbageholdes hele teksten.
@@ -56,9 +58,10 @@ python -m pseudonymizer corpus/da_synthetic.json            # kerne
 python -m pseudonymizer corpus/da_synthetic.json --presidio # med Presidio (kræver [presidio] og en dansk spaCy-model)
 ```
 
-Korpusset (`corpus/da_synthetic.json`, 68 opdigtede tekster) måler recall pr. type og **overmaskering** (nyttig tekst, der blev ødelagt).
+Korpusset (`corpus/da_synthetic.json`, 207 opdigtede tekster) måler recall pr. type og **overmaskering** (nyttig tekst, der blev ødelagt).
 Tallene er vejledende (lille, syntetisk korpus), men testene bruger dem som regressionsport, så motoren ikke bliver dårligere.
-Se [docs/PRESIDIO.md](docs/PRESIDIO.md) for målingerne med og uden Presidio og for **den kendte svaghed: sjældne navne med småt**.
+Se [docs/NAVNELISTE.md](docs/NAVNELISTE.md) for målinger pr. tærskel og [docs/PRESIDIO.md](docs/PRESIDIO.md) for Presidio. **Kendt svaghed: navne, der ikke står på
+listen** (under 3 bærere, nye stavemåder, stavefejl i sjældne navne).
 
 ## Kør testene
 
@@ -68,5 +71,5 @@ python -m unittest discover tests
 
 ## Videre
 
-[docs/DESIGN.md](docs/DESIGN.md) (hvordan en klient bruger motoren) · [docs/PRESIDIO.md](docs/PRESIDIO.md) · [docs/ROADMAP.md](docs/ROADMAP.md)
+[docs/DESIGN.md](docs/DESIGN.md) (hvordan en klient bruger motoren) · [docs/NAVNELISTE.md](docs/NAVNELISTE.md) · [docs/PRESIDIO.md](docs/PRESIDIO.md) · [docs/ROADMAP.md](docs/ROADMAP.md)
 (inkl. træning på en stationær maskine, og hvad der aldrig må ligge i dette repo).
