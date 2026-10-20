@@ -1,0 +1,19 @@
+# Aldrig i dette (offentlige) repo: rigtige data, token-lagre, modeller trænet på rigtige data, hemmeligheder
+.env
+.env.*
+local/
+local-data/
+*.sqlite
+*.db
+store.json
+box.json
+models/
+*.pt
+*.safetensors
+*.onnx
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.venv/
