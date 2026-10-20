@@ -9,6 +9,7 @@ REGEXES = [r"gh[pousr]_[A-Za-z0-9]{20,}", r"sk-[A-Za-z0-9]{20,}", r"-----BEGIN [
 SUBSTRINGS = ["C:" + chr(92) + "Users", "Athena", "Olivia", "Sommer Pedersen", "3177502", "3177503", "kewi0194", "@gmail.com",
               "tailcc94cc", "ts.net", "G18932", "PILETR"]
 FORBIDDEN = REGEXES
+OWNER = "Kewin Sommer Pedersen"  # copyright-linjen i LICENSE
 # Opdigtede eksempler må stå: e-mails og links på example.invalid, og de falske CPR-numre i korpusset.
 EMAIL = re.compile(r"[\w.+-]+@(?!example\.invalid)[\w-]+(?:\.[\w-]+)+")
 URL = re.compile(r"https?://(?!example\.invalid|github\.com|presidio|spacy|microsoft\.github\.io|explosion\.ai|pypi\.org|docs\.python\.org)[^\s\"')]+")
@@ -33,8 +34,10 @@ class NoSecretsTest(unittest.TestCase):
             for pat in REGEXES:
                 if re.search(pat, text):
                     problems.append(f"{f.relative_to(_path.ROOT)}: {pat}")
+            # Ejerens navn står med vilje i LICENSE (og nævnes i CLAUDE.md); andre former af navnet fanges stadig.
+            checked = text.replace(OWNER, "")
             for sub in SUBSTRINGS:
-                if sub in text:
+                if sub in checked:
                     problems.append(f"{f.relative_to(_path.ROOT)}: {sub}")
             for rx in (EMAIL, URL):
                 m = rx.search(text)
